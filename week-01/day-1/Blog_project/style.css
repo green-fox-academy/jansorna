@@ -1,0 +1,44 @@
+h1 {background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    padding: 20px 10% 20px 10%;
+    margin: 0;
+}
+
+#main{
+    margin: 0 10%;
+    }
+
+.Submit {
+    margin: 20px 0;
+    height: 50px;
+    width: 100px;
+}
+
+.Posts {
+    border: 1px black double;
+    margin: 10px 0;
+    padding: 0;
+    width: 80%;
+}
+
+p {
+    padding: 0 5px;
+    font-size: 14px;
+}
+
+.postheaders {
+    margin: 5px 0;
+}
+
+#content {
+    width: 80%;
+    height: 200px;
+}
+
+body {
+    background: url("https://www.toptal.com/designers/subtlepatterns/patterns/topography.png");
+    font-family: consolas;
+}
+
+.Submit {
+    
+}
