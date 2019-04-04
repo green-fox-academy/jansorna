@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9cbb941c-71c3-49a0-a839-8244d491fa9c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AnimalsAndLegs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HelloUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MileToKmConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OddEven.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,10 +19,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AnimalsAndLegs.java">
+        <entry file="file://$PROJECT_DIR$/src/OddEven.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+            <state relative-caret-position="266">
+              <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -60,6 +58,7 @@
         <option value="$PROJECT_DIR$/src/HelloUser.java" />
         <option value="$PROJECT_DIR$/src/MileToKmConverter.java" />
         <option value="$PROJECT_DIR$/src/AnimalsAndLegs.java" />
+        <option value="$PROJECT_DIR$/src/OddEven.java" />
       </list>
     </option>
   </component>
@@ -118,16 +117,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AnimalsAndLegs">
+  <component name="RunManager" selected="Application.OddEven">
     <configuration name="AnimalsAndLegs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AnimalsAndLegs" />
-      <module name="day-4" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Bmi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Bmi" />
       <module name="day-4" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,6 +139,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OddEven" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="OddEven" />
+      <module name="day-4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="VariableMutation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="VariableMutation" />
       <module name="day-4" />
@@ -156,11 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OddEven" />
         <item itemvalue="Application.AnimalsAndLegs" />
         <item itemvalue="Application.MileToKmConverter" />
         <item itemvalue="Application.HelloUser" />
         <item itemvalue="Application.VariableMutation" />
-        <item itemvalue="Application.Bmi" />
       </list>
     </recent_temporary>
   </component>
@@ -174,12 +173,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554376984108</updated>
-      <workItem from="1554376988355" duration="13664000" />
+      <workItem from="1554376988355" duration="14728000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13664000" />
+    <option name="totallyTimeSpent" value="14728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -327,8 +326,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AnimalsAndLegs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        <state relative-caret-position="181">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OddEven.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
         </state>
       </provider>
     </entry>
