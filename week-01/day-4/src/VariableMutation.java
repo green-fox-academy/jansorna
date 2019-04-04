@@ -34,11 +34,11 @@ public class VariableMutation {
 
         int e = 8;
 
-        e = e*e*e;
+        double ecubed = Math.pow(e,3);
 
         // please cube of e's value
 
-        System.out.println(e);
+        System.out.println(ecubed);
 
         int f1 = 123;
         int f2 = 345;
@@ -68,8 +68,8 @@ public class VariableMutation {
         int i1 = 10;
         int i2 = 3;
 
-        int i2Squared = i2 * i2;
-        int i2Cubed = i2Squared * i2;
+        double i2Squared = Math.pow(i2,2);
+        double i2Cubed = Math.pow(i2,3);
 
         boolean result = ((i2Squared < i1) && (i1 < i2Cubed));
         System.out.println(result);

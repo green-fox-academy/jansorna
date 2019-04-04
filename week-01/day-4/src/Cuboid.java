@@ -10,6 +10,8 @@ public class Cuboid {
         System.out.println("Surface Area: " + surfaceArea);
         System.out.println("Volume: " + volume);
 
+        //Not sure how to store variables so I just defined them
+
         // Write a program that stores 3 sides of a cuboid as variables (doubles)
         // The program should write the surface area and volume of the cuboid like:
         //
