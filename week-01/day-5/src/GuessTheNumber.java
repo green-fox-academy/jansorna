@@ -16,7 +16,7 @@ public class GuessTheNumber {
                     System.out.println("The stored number is lower");
                 } else {
                     System.out.println("You found the number: " + theSearchedNumber);
-                    
+
                 }
         }
     }
