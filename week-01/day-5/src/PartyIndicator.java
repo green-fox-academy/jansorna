@@ -11,7 +11,7 @@ public class PartyIndicator<numberOfGirls> {
         System.out.println("Please give me the number of coming boys to the party: ");
         int numberOfBoys = scanner.nextInt();
 
-        double ratioOfGirlsAndBoys = numberOfGirls / numberOfBoys;
+        double ratioOfGirlsAndBoys = (double) numberOfGirls / numberOfBoys;
 
         if (numberOfGirls == 0) {
 
