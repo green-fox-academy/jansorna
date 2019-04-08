@@ -12,7 +12,7 @@ public class AppendaGreet {
         return inputParameter + appendix;
     }
 
-    
+
     //  Create the usual class wrapper
     //  and main method on your own.
 
