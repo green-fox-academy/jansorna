@@ -30,4 +30,5 @@ out
 * .iml
 * .html
 * .xml
-* .iml
+*.iml
+d*.iml
