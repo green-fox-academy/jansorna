@@ -19,7 +19,7 @@ public class Mapintroduction2 {
 
         map.remove("978-1-60309-444-3");
 
-        map.remove("978-1-60309-461-0");
+        map.values().remove("The Lab");
 
         map.put("978-1-60309-450-4", "They Called Us Enemy");
         map.put("978-1-60309-453-5", "Why Did We Trust Him?");
