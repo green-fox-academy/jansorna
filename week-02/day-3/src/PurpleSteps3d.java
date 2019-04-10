@@ -4,29 +4,34 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class PurpleSteps {
+public class PurpleSteps3d {
     public static void mainDraw(Graphics graphics) {
         // Reproduce this:
-        // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/purple-steps/r3.png]
+        // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/purple-steps-3d/r4.png]
 
-        int howManySquares = 19;
+        int howManySquares = 6;
         int size = 10;
+        int positionOfSquare = 10;
+        double multiplayer = 1.5;
 
-        for (int row = 0; row < howManySquares; row++) {
+        for (int i = 0; i < howManySquares; i++) {
 
-            for (int column = 0; column < howManySquares; column++) {
+            purplesteps3d(graphics, positionOfSquare, size);
 
-                if(row == column) {
-
-                    graphics.setColor(Color.MAGENTA);
-                    graphics.fillRect((column * size) + size, (row * size) + size, size, size);
-
-
-                    graphics.setColor(Color.BLACK);
-                    graphics.drawRect((column * size) + size, (row * size) + size, size, size);
-                }
-            }
+            positionOfSquare = positionOfSquare + size;
+            size = (int)(size * multiplayer);
         }
+
+    }
+
+    public static void purplesteps3d (Graphics graphics, int position, int size) {
+
+        graphics.setColor(Color.MAGENTA);
+        graphics.fillRect(position, position, size, size);
+
+        graphics.setColor(Color.BLACK);
+        graphics.drawRect(position, position, size, size);
+
     }
 
     // Don't touch the code below
