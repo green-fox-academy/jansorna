@@ -16,11 +16,11 @@ public class RainbowBoxFunction {
 
         int size = (int)(100 + Math.random() * (WIDTH - 100));
 
-        int widthOfColor = 10;
+        int widthOfColor = 20;
 
         for (int i = 0; i < numberOfSquares; i++) {
 
-            size = size - (i * widthOfColor);
+            size = size - (widthOfColor);
 
             int [] color = {148, 0, 211};
 
