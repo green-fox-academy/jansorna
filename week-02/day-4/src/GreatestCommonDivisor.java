@@ -2,7 +2,7 @@ public class GreatestCommonDivisor {
 
     public static void main (String[] args) {
         int firstNumber = 100;
-        int secondNumber = 20; //second number must be smaller
+        int secondNumber = 20;
         int divisor = 0;
 
         if (firstNumber < secondNumber) {
