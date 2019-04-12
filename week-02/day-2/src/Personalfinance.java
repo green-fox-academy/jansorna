@@ -3,29 +3,29 @@ import java.util.Arrays;
 
 public class Personalfinance {
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
-    ArrayList<Integer> expenses = new ArrayList<>(Arrays.asList(500, 1000, 1250, 175, 800, 120));
+        ArrayList<Integer> expenses = new ArrayList<>(Arrays.asList(500, 1000, 1250, 175, 800, 120));
 
-    application(expenses);
+        application(expenses);
     }
 
-    public static void application (ArrayList<Integer> inputArray) {
+    public static void application(ArrayList<Integer> inputArray) {
 
         int moneyYouSpend = 0;
         int smallestExpense = inputArray.get(0);
         int biggestExpense = inputArray.get(0);
 
-        for (Integer value: inputArray) {
+        for (Integer value : inputArray) {
             moneyYouSpend += value;
 
             if (smallestExpense > value) {
-               smallestExpense = value;
-           }
-            if (biggestExpense < value){
-               biggestExpense = value;
-                }
+                smallestExpense = value;
             }
+            if (biggestExpense < value) {
+                biggestExpense = value;
+            }
+        }
 
         double averageSpending = moneyYouSpend / inputArray.size();
 
@@ -34,7 +34,7 @@ public class Personalfinance {
         System.out.println("The cheaping expense was: " + smallestExpense);
         System.out.println("The average spending was: " + averageSpending);
 
-        }
     }
+}
 
 

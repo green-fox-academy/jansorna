@@ -1,6 +1,6 @@
 public class Strings {
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         String inputWord = "xxxxxxxXXXXxxxxxx";
         int numberOfLetters = inputWord.length();
@@ -18,7 +18,7 @@ public class Strings {
 
             return word;
 
-        } else if (word.charAt(number) == x){
+        } else if (word.charAt(number) == x) {
 
             return stringChanger((word.substring(0, number) + y + word.substring(number + 1)), numberOfLetters, number + 1);
 
