@@ -4,17 +4,25 @@ public class ParametricAverage {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please give me whole number:");
-        int firstNumber = scanner.nextInt();
+        System.out.println("Please give me how much numbers you have:");
+        int howMuchTimes = scanner.nextInt();
 
+        System.out.println("Now I will ask you for each of them.");
 
-             for (int i = 0; i < firstNumber - 1 ; i++) {
-                 System.out.println("Please give me whole number:");
-                 int anotherNumber = scanner.nextInt();
+        int[] basket = new int[howMuchTimes];
+        int sum = 0;
 
+        for (int i = 0; i < howMuchTimes; i++) {
+            System.out.println("Please give me whole number:");
+            int temp = scanner.nextInt();
+            basket[i] = temp;
+        }
 
-                 //somehow need to pull out the numbers from for and sum them in a basket, maybe switch to use
-             }
+        for (int i = 0; i < basket.length; i++) {
+            sum += basket[i];
+        }
 
+        System.out.println("Sum: " + sum);
+        System.out.println("Average: " + sum / basket.length);
     }
 }
