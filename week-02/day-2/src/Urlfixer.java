@@ -11,8 +11,10 @@ public class Urlfixer {
     }
 
     public static String addChar(String input) {
+
         int position = 5;
         String missingChar = ":";
+
         return input.substring(0, position) + missingChar + input.substring(position);
     }
 

@@ -27,9 +27,5 @@ public class Mapintroduction2 {
         System.out.println(map.containsKey("478-0-61159-424-8"));
 
         System.out.println(map.get("978-1-60309-453-5"));
-
-
-
-
     }
 }

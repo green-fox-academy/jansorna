@@ -26,10 +26,6 @@ public class Telephonebook {
                 System.out.println(value.getKey());
             }
         }
-
         System.out.println(inputHashMap.get("Chris E. Myers"));
-
     }
-
-
 }
