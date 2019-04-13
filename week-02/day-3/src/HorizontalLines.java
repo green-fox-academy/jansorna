@@ -14,13 +14,13 @@ public class HorizontalLines {
         int numberOfLines = 3;
 
         for (int i = 0; i < numberOfLines; i++) {
-            int x = (int)(Math.random()*(WIDTH - 50));
-            int y = (int)(Math.random()* HEIGHT);
-            horzontalLines(graphics,x, y);
+            int x = (int) (Math.random() * (WIDTH - 50));
+            int y = (int) (Math.random() * HEIGHT);
+            horzontalLines(graphics, x, y);
         }
     }
 
-    public static void horzontalLines (Graphics graphics, int x, int y){
+    public static void horzontalLines(Graphics graphics, int x, int y) {
 
         int lenghtX = x + 50;
 

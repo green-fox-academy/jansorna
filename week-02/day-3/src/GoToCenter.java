@@ -15,16 +15,16 @@ public class GoToCenter {
         int numberOfLines = 3;
 
         for (int i = 0; i < numberOfLines; i++) {
-            int x = (int)(Math.random()*WIDTH);
-            int y = (int)(Math.random()*HEIGHT);
-            toTheCenter(graphics,x, y, numberOfLines);
+            int x = (int) (Math.random() * WIDTH);
+            int y = (int) (Math.random() * HEIGHT);
+            toTheCenter(graphics, x, y);
         }
     }
 
-    public static void toTheCenter (Graphics graphics, int x, int y, int numberOfLines){
+    public static void toTheCenter(Graphics graphics, int x, int y) {
 
-        int centerX = WIDTH/2;
-        int centerY = HEIGHT/2;
+        int centerX = WIDTH / 2;
+        int centerY = HEIGHT / 2;
 
         graphics.drawLine(x, y, centerX, centerY);
     }

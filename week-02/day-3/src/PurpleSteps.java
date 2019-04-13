@@ -16,11 +16,10 @@ public class PurpleSteps {
 
             for (int column = 0; column < howManySquares; column++) {
 
-                if(row == column) {
+                if (row == column) {
 
                     graphics.setColor(Color.MAGENTA);
                     graphics.fillRect((column * size) + size, (row * size) + size, size, size);
-
 
                     graphics.setColor(Color.BLACK);
                     graphics.drawRect((column * size) + size, (row * size) + size, size, size);

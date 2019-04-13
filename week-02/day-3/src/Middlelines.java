@@ -5,7 +5,7 @@ import java.awt.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Middlelines {
-    public static void mainDraw(Graphics graphics){
+    public static void mainDraw(Graphics graphics) {
         // draw a red horizontal line to the canvas' middle.
         // draw a green vertical line to the canvas' middle.
 
@@ -14,7 +14,6 @@ public class Middlelines {
 
         graphics.setColor(Color.GREEN);
         graphics.drawLine(160, 0, 160, 320);
-
     }
 
     // Don't touch the code below

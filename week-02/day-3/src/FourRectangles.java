@@ -6,7 +6,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class FourRectangles {
 
-    public static void mainDraw(Graphics graphics){
+    public static void mainDraw(Graphics graphics) {
         // draw four different size and color rectangles.
         // avoid code duplication.
 
@@ -14,24 +14,23 @@ public class FourRectangles {
 
         for (int i = 0; i < numberOfSquares; i++) {
 
-            int sizeX = (int)(Math.random()*WIDTH);
-            int sizeY = (int)(Math.random()* HEIGHT);
+            int sizeX = (int) (Math.random() * WIDTH);
+            int sizeY = (int) (Math.random() * HEIGHT);
 
-            int x = (int)(Math.random()*(WIDTH - sizeX));
-            int y = (int)(Math.random()* (HEIGHT - sizeY));
+            int x = (int) (Math.random() * (WIDTH - sizeX));
+            int y = (int) (Math.random() * (HEIGHT - sizeY));
 
-            Color color = new Color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256));
+            Color color = new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256));
 
             graphics.setColor(color);
 
-            squareMaker(graphics,x, y, sizeX, sizeY);
+            squareMaker(graphics, x, y, sizeX, sizeY);
         }
     }
 
     public static void squareMaker(Graphics graphics, int x, int y, int sizeX, int sizeY) {
 
         graphics.drawRect(x, y, sizeX, sizeY);
-
     }
 
     // Don't touch the code below
