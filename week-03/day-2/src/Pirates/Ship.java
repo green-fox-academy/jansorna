@@ -17,6 +17,7 @@ public class Ship {
 
         shipCounter++;
         this.nameOfTheShip = "Ship " + shipCounter;
+        fillShip();
     }
 
     public void fillShip() {
@@ -29,7 +30,6 @@ public class Ship {
         for (int i = 0; i < (int) (Math.random() * 1000); i++) {
             crew.add(new Pirate());
             crew.get(i).drinkSomeRum();
-            crew.get(i).brawl(crew.get((int) (Math.random() * crew.size())));
         }
         alivePiratesCounter();
     }
@@ -66,7 +66,7 @@ public class Ship {
     }
 
     public void crewLost(Ship looosingShip) {
-        for (int i = 0; i < (int) ((int) (Math.random() * looosingShip.crew.size())); i++) {
+        for (int i = 0; i < (int)(Math.random() * looosingShip.crew.size()); i++) {
             looosingShip.crew.get(i).die();
             alivePiratesCounter = 0;
             alivePiratesCounter();
@@ -79,7 +79,7 @@ public class Ship {
 
         result += "Name of the Ship: " + nameOfTheShip + "\n";
 
-        for (int i = 0; i < captain.size(); i++) {
+        for (int i = 0; i < 1; i++) {
             result += captain.get(i) + "\n";
         }
 
