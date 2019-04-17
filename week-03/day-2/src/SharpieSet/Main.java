@@ -33,6 +33,6 @@ public class Main {
             System.out.println(sh.color);
         }
         //end testing
-        
+
     }
 }
