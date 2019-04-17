@@ -21,7 +21,7 @@ public class Armada {
         int shipOfFirstArmada = 0;
         int shipOfSecondArmada = 0;
 
-        while (shipOfFirstArmada < this.armada.size() - 2 && shipOfSecondArmada < otherArmada.armada.size() - 2) {
+        while (shipOfFirstArmada < this.armada.size() - 1 && shipOfSecondArmada < otherArmada.armada.size() - 1) {
             while (this.armada.get(shipOfFirstArmada).battle(otherArmada.armada.get(shipOfSecondArmada))) {
                 shipOfSecondArmada++;
             }
