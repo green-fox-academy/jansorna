@@ -18,14 +18,12 @@ public abstract class Aircraft {
     }
 
     public int refill(int ammoReffilling) {
-
-        for (int i = 0; i < ammoReffilling; i++) {
-            if (ammoReffilling > 0) {           //sem se vratit
-                if (ammunition < maxAmmo) {
-                    ammunition++;
-                    ammoReffilling--;
-                }
-            }
+        if (ammoReffilling >= maxAmmo){
+            ammoReffilling -= (maxAmmo - ammunition);
+            ammunition = maxAmmo;
+        } else {
+            ammunition += ammoReffilling;
+            ammoReffilling = 0;
         }
         return ammoReffilling;
     }

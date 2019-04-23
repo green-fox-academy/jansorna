@@ -3,6 +3,7 @@ package aircraftcarrier;
 public class Main {
     public static void main(String[] args) {
 
+        //start testing
         F16 firstF16 = new F16();
         F16 secondF16 = new F16();
         F16 thirdF16 = new F16();
@@ -28,17 +29,17 @@ public class Main {
         secondCarier.add(fourthF16);
         secondCarier.add(fourthF35);
 
-        firstCarier.getStatus();
-        secondCarier.getStatus();
-
         firstCarier.fill();
         secondCarier.fill();
 
         firstCarier.getStatus();
         secondCarier.getStatus();
 
+        System.out.println();
+        firstCarier.fight(secondCarier);
 
-
-
+        firstCarier.getStatus();
+        secondCarier.getStatus();
+        //end testing
     }
 }
