@@ -12,11 +12,19 @@ public abstract class Aircraft {
         return damageDealt;
     }
 
+    public int fightingpotential() {
+        int potentialDamage = ammunition * baseDamage;
+        return potentialDamage;
+    }
+
     public int refill(int ammoReffilling) {
+
         for (int i = 0; i < ammoReffilling; i++) {
-            if (ammunition < maxAmmo) {
-                ammunition++;
-                ammoReffilling--;
+            if (ammoReffilling > 0) {           //sem se vratit
+                if (ammunition < maxAmmo) {
+                    ammunition++;
+                    ammoReffilling--;
+                }
             }
         }
         return ammoReffilling;
