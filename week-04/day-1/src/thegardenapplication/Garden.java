@@ -3,96 +3,48 @@ package thegardenapplication;
 import java.util.ArrayList;
 
 public class Garden {
-    ArrayList<Flower> flowers;
-    ArrayList<Tree> trees;
+    ArrayList<Plant> plants;
 
-    int howManyFLowersNeedsWatering;
-    int howManyTreesNeedsWatering;
-
+    int howManyPlantsNeedsWatering = 0;
 
     public Garden() {
-        this.flowers = new ArrayList<>();
-        this.trees = new ArrayList<>();
+        this.plants = new ArrayList<>();
     }
 
-    public void addFlowerToGarden(Flower givenFlower) {
-        this.flowers.add(givenFlower);
+    public void addPlantToGarden(Plant inputPlant) {
+        this.plants.add(inputPlant);
     }
 
-    public void addTreeToGarden(Tree givenTree) {
-        this.trees.add(givenTree);
-    }
-
-    public int countFlowersNeedsWatering() {
-        for (Flower inspectedFlower : flowers) {
-            if (inspectedFlower.needWatering) {
-                howManyFLowersNeedsWatering++;
+    public int countPlantsNeedingWatering() {
+        for (Plant inspectedPlant : plants) {
+            inspectedPlant.setNeedWatering();
+            if (inspectedPlant.needWatering) {
+                howManyPlantsNeedsWatering++;
             }
         }
-        return howManyFLowersNeedsWatering;
+        return howManyPlantsNeedsWatering;
     }
 
-    public int countTreesNeedsWatering() {
-        for (Tree inspectedTree : trees) {
-            if (inspectedTree.needWatering) {
-                howManyTreesNeedsWatering++;
-            }
-        }
-        return howManyTreesNeedsWatering;
-    }
-
-
-    public void wateringOfFlowersInGarden(double wateringAmount) {
-        countFlowersNeedsWatering();
-        countTreesNeedsWatering();
-        double amountOfWaterForOneFlower = wateringAmount / (howManyFLowersNeedsWatering + howManyTreesNeedsWatering);
-
-        for (Flower wateredFlower : flowers) {
-            if (wateredFlower.needWatering) {
-                wateredFlower.wateringFlower(amountOfWaterForOneFlower);
-            }
-        }
-        howManyFLowersNeedsWatering = 0;
-        howManyTreesNeedsWatering = 0;
-    }
-
-    public void wateringOfTreesInGarden(double wateringAmount) {
-        countTreesNeedsWatering();
-        countFlowersNeedsWatering();
-        double amountOfWaterForOneTree = wateringAmount / (howManyFLowersNeedsWatering + howManyTreesNeedsWatering);
-
-        for (Tree wateredTree : trees) {
-            if (wateredTree.needWatering) {
-                wateredTree.wateringTree(amountOfWaterForOneTree);
-            }
-        }
-        howManyTreesNeedsWatering = 0;
-        howManyFLowersNeedsWatering = 0;
-    }
-
-    public void wateringTheWholeGarden(int wateringAmount){
+    public void wateringOfPlantsInGarden(double wateringAmount) {
         System.out.println("Watering with " + wateringAmount);
-        wateringOfFlowersInGarden(wateringAmount);
-        wateringOfTreesInGarden(wateringAmount);
+
+        double amountOfWaterForOnePlant = wateringAmount / countPlantsNeedingWatering();
+        for (Plant wateredPlant : plants) {
+            if (wateredPlant.needWatering) {
+                wateredPlant.wateringPlant(amountOfWaterForOnePlant);
+            }
+        }
         checkTheStatusOfGarden();
+        howManyPlantsNeedsWatering = 0;
     }
 
     public void checkTheStatusOfGarden() {
-
-        for (Flower inspectedFlower : flowers) {
-            inspectedFlower.setNeedWatering();
-            if (inspectedFlower.needWatering) {
-                System.out.println("The " + inspectedFlower.color + " Flower needs water");
+        for (Plant inspectedPlant : plants) {
+            inspectedPlant.setNeedWatering();
+            if (inspectedPlant.needWatering) {
+                System.out.println("The " + inspectedPlant.color + " " + inspectedPlant.type + " needs water");
             } else {
-                System.out.println("The " + inspectedFlower.color + " Flower doesnt need water");
-            }
-        }
-        for (Tree inspectedTree : trees) {
-            inspectedTree.setNeedWatering();
-            if (inspectedTree.needWatering) {
-                System.out.println("The " + inspectedTree.color + " Tree needs water");
-            } else {
-                System.out.println("The " + inspectedTree.color + " Tree doesnt need water");
+                System.out.println("The " + inspectedPlant.color + " " + inspectedPlant.type + " doesnt need water");
             }
         }
     }

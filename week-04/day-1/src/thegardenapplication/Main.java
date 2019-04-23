@@ -14,19 +14,19 @@ public class Main {
 
         Garden myFirstGarden = new Garden();
 
-        myFirstGarden.addFlowerToGarden(yellow);
-        myFirstGarden.addFlowerToGarden(blue);
+        myFirstGarden.addPlantToGarden(yellow);
+        myFirstGarden.addPlantToGarden(blue);
 
-        myFirstGarden.addTreeToGarden(purple);
-        myFirstGarden.addTreeToGarden(orange);
+        myFirstGarden.addPlantToGarden(purple);
+        myFirstGarden.addPlantToGarden(orange);
 
         myFirstGarden.checkTheStatusOfGarden();
         System.out.println();
 
-        myFirstGarden.wateringTheWholeGarden(40);
+        myFirstGarden.wateringOfPlantsInGarden(40);
         System.out.println();
 
-        myFirstGarden.wateringTheWholeGarden(70);
+        myFirstGarden.wateringOfPlantsInGarden(70);
 
         //testing of app end
     }
