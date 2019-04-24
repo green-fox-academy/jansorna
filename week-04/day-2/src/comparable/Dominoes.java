@@ -6,14 +6,22 @@ import java.util.List;
 
 public class Dominoes {
     public static void main(String[] args) {
-        List<Domino> dominoes = initializeDominoes();
 
+        List<Domino> dominoes = initializeDominoes();
         Collections.sort(dominoes);
         System.out.println(dominoes);
+
+        for (Domino d : dominoes) {
+            d.printAllFields();
+        }
 
         List<Thing> things = initializeThings();
         Collections.sort(things);
         System.out.println(things);
+
+        for (Thing t : things) {
+            t.printAllFields();
+        }
     }
 
     static List<Domino> initializeDominoes() {
