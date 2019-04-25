@@ -36,6 +36,7 @@ public class CABTEST {
         myCAB.guess(3, 2, 1, 4);
         assertEquals(2, myCAB.cowCount);
         assertEquals(2, myCAB.bullCount);
+        assertEquals("Playing", myCAB.stateOfTheGame);
     }
 
     @Test
@@ -43,6 +44,7 @@ public class CABTEST {
         myCAB.guess(7, 8, 9, 6);
         assertEquals(0, myCAB.cowCount);
         assertEquals(0, myCAB.bullCount);
+        assertEquals("Playing", myCAB.stateOfTheGame);
     }
 
     @Test
