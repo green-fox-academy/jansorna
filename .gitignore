@@ -32,3 +32,13 @@ out
 * .xml
 *.iml
 d*.iml
+
+# Testing in Gradle
+
+.gradle
+gradle
+resources
+build.gradle
+gradlew
+gradlew.bat
+settings.gradle
