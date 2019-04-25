@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Extension {
@@ -20,11 +22,12 @@ public class Extension {
     }
 
     public int median(List<Integer> pool) {
+        Collections.sort(pool);
         return pool.get((pool.size() - 1) / 2);
     }
 
     public boolean isVowel(char c) {
-        return Arrays.asList('a', 'u', 'o', 'e', 'i').contains(c);
+        return Arrays.asList('a', 'u', 'o', 'e', 'i', 'y').contains(c);
     }
 
     String translate(String hungarian) {

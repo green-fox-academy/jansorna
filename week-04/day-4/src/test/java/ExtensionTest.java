@@ -2,8 +2,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class ExtensionTest {
@@ -47,7 +46,7 @@ public class ExtensionTest {
 
     @Test
     public void testIsVowel_u() {
-        assertTrue(extension.isVowel('u'));
+        assertFalse(extension.isVowel('x'));
     }
 
     @Test
