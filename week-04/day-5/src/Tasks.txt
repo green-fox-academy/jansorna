@@ -1,5 +1,4 @@
 Walk the dog
-Buy milk
-Do homework
 Cook dinner
 Finish ToDo App
+Another task
