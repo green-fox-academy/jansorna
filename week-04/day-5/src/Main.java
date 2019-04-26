@@ -37,6 +37,11 @@ public class Main {
         }
 
         if (args[0].equals("-a")) {
+
+            if (args.length == 1) {
+                System.out.println("Unable to add: no task provided");
+            }
+
             try {
                 List<String> content = Files.readAllLines(tasksPath);
 
@@ -49,7 +54,7 @@ public class Main {
             }
         }
 
-        
+
 
     }
 }
