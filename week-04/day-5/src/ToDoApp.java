@@ -41,7 +41,7 @@ public class ToDoApp {
             List<String> content = Files.readAllLines(tasksPath);
 
             for (int i = 0; i < args.length - 1; i++) {
-                content.add("[ ] " + args[i + 1]);
+                content.add("[ ] " + args[1]);
             }
             Files.write(tasksPath, content);
         } catch (IOException e) {

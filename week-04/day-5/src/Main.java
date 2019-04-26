@@ -11,37 +11,27 @@ public class Main {
 
             if (args.length == 0) {
                 myToDoApp.printOutPossibilities();
-            }
-
-            if (args[0].equals("-l")) {
+            } else if (args[0].equals("-l")) {
                 myToDoApp.listTask();
-            }
-
-            if (args[0].equals("-a")) {
+            } else if (args[0].equals("-a")) {
                 myToDoApp.addTask(args);
-            }
-
-            try {
-                if (args[0].equals("-r")) {
+            } else if (args[0].equals("-r")) {
+                try {
                     myToDoApp.removeTask(args);
+                } catch (NumberFormatException e) {
+                    System.out.println("Unable to remove: index is not a number.");
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("Unable to remove: index is not a number.");
-            }
-
-            try {
-                if (args[0].equals("-c")) {
+            } else if (args[0].equals("-c")) {
+                try {
                     myToDoApp.checkTask(args);
+                } catch (NumberFormatException e) {
+                    System.out.println("Unable to check: index is not a number");
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("Unable to check: index is not a number");
-            }
-
-            if (args[0] != "-l" && args[0] != "-a" && args[0] != "-r" && args[0] != "-r") {
+            } else {
                 System.out.println("Unsupported argument");
             }
-
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (
+                ArrayIndexOutOfBoundsException e) {
         }
     }
 }

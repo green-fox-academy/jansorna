@@ -1,3 +1,7 @@
 [X] First task
 [ ] Third task
-[ ] Fourth task
+[X] Fourth task
+[ ] New task
+[ ] Do sth
+[ ] Do sth
+[ ] Another task

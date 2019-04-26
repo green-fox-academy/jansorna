@@ -13,7 +13,7 @@ public class CountLettersTest {
 
     @Before
     public void beforeMethod() {
-        this.firstString = "He";
+        this.firstString = "Hello";
         lettersOfTheStringInArray = firstString.toCharArray();
         exampleMap.put('H', 1);
         exampleMap.put('E', 1);
