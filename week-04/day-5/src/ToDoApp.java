@@ -29,7 +29,7 @@ public class ToDoApp {
                 System.out.println((i + 1) + " - " + lines.get(i));
             }
         } catch (IOException e) {
-            System.out.println("Something went wrong wit tasks file.");
+            System.out.println("Something went wrong with tasks file.");
         }
     }
 
@@ -45,7 +45,7 @@ public class ToDoApp {
             }
             Files.write(tasksPath, content);
         } catch (IOException e) {
-            System.out.println("Something went wrong wit tasks file.");
+            System.out.println("Something went wrong with tasks file.");
         }
     }
 
@@ -53,21 +53,35 @@ public class ToDoApp {
         if (args.length == 1) {
             System.out.println("Unable to remove: no index provided");
         }
-        int numberOfRemoval = Integer.parseInt(args[1]);
+        int numberOfRemoval = Integer.parseInt(args[1]) - 1;
         try {
             List<String> content = Files.readAllLines(tasksPath);
-            content.remove(numberOfRemoval - 1);
+            content.remove(numberOfRemoval);
             Files.write(tasksPath, content);
 
         } catch (IOException e) {
-            System.out.println("Something went wrong wit tasks file.");
+            System.out.println("Something went wrong with tasks file.");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Unable to remove: index is out of bound.");
         }
     }
 
     public void checkTask(String[] args) {
+        if (args.length == 1) {
+            System.out.println("Unable to remove: no index provided");
+        }
+        int numberOfChecker = Integer.parseInt(args[1]) - 1;
+        try {
+            List<String> content = Files.readAllLines(tasksPath);
 
+            content.set(numberOfChecker, "[X] " + content.get(numberOfChecker).substring(4));
+            Files.write(tasksPath, content);
+
+        } catch (IOException e) {
+            System.out.println("Something went wrong with tasks file.");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Unable to remove: index is out of bound.");
+        }
     }
 }
 

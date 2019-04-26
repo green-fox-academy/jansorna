@@ -26,13 +26,20 @@ public class Main {
                     myToDoApp.removeTask(args);
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Unsupported argument.");
+                System.out.println("Unable to remove: index is not a number.");
             }
 
-            if (args[0].equals("-c")) {
-                myToDoApp.checkTask(args);
+            try {
+                if (args[0].equals("-c")) {
+                    myToDoApp.checkTask(args);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Unable to check: index is not a number");
             }
 
+            if (args[0] != "-l" && args[0] != "-a" && args[0] != "-r" && args[0] != "-r") {
+                System.out.println("Unsupported argument");
+            }
 
         } catch (ArrayIndexOutOfBoundsException e) {
         }
