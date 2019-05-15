@@ -16,14 +16,23 @@ public class HelloWebController {
     @RequestMapping("/web/greeting")
     public String greeting(Model model, @RequestParam String name) {
 
+        model.addAttribute("style", "color:" + getRandomRGB() + "; font-size:" + (int) (Math.random() * 30 + 12) + "px;");
         model.addAttribute("greetings", getRandomGreeting());
         model.addAttribute("name", name);
         model.addAttribute("id", Greeting.id.incrementAndGet());
         return "greeting";
     }
 
-    public String getRandomGreeting(){
+    public String getRandomGreeting() {
         int randomNumber = (int) (Math.random() * hellos.length);
         return hellos[randomNumber];
+    }
+
+    public String getRandomRGB() {
+        return "rgb(" + randomColorNumber()+ ", " + randomColorNumber()+ ", " + randomColorNumber()+ ")";
+    }
+
+    public int randomColorNumber() {
+        return (int) (Math.random() * 255);
     }
 }
