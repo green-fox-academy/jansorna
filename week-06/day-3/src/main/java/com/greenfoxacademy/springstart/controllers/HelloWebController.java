@@ -29,10 +29,10 @@ public class HelloWebController {
     }
 
     public String getRandomRGB() {
-        return "rgb(" + randomColorNumber()+ ", " + randomColorNumber()+ ", " + randomColorNumber()+ ")";
+        return "rgb(" + randomColorNumber() + ", " + randomColorNumber() + ", " + randomColorNumber() + ")";
     }
 
     public int randomColorNumber() {
-        return (int) (Math.random() * 255);
+        return (int) (Math.random() * 256);
     }
 }
