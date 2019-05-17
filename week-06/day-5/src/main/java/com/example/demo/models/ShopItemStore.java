@@ -2,7 +2,6 @@ package com.example.demo.models;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,17 +52,22 @@ public class ShopItemStore {
                 .collect(Collectors.toList());
     }
 
+    public List<ShopItem> searchForWord(String word) {
+        return shopItemsList.stream()
+                .filter(a -> a.getDescription().contains(word) || a.getName().contains(word))
+                .collect(Collectors.toList());
+    }
+
     public double getAverageStock() {
         return shopItemsList.stream()
                 .map(a -> a.getStockQuantity())
                 .collect(Collectors.averagingDouble(Integer::intValue));
     }
 
+    public String getNameOfMostExpensive() {
+        return shopItemsList.stream()
+                .max(Comparator.comparing(ShopItem::getPrice))
+                .map(a -> a.getName())
+                .get();
+    }
 }
-
-/*    It contains basic links for filtering:
-        List only available
-        Order by the cheapest first
-        List only those what contain "nike" in the name or description
-        Show the average of the stock
-        Show the most expensive available item's name*/

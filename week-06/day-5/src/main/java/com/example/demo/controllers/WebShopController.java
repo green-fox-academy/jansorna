@@ -5,42 +5,52 @@ import com.example.demo.models.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WebShopController {
 
+    ShopItemStore myStore = new ShopItemStore();
+
     @RequestMapping("/webshop")
     public String basicWebShop(Model model) {
-        ShopItemStore myStore = new ShopItemStore();
         model.addAttribute("items", myStore.getShopItemsList());
-        return "shopViewWithTable";
+        return "viewWithTable";
     }
 
     @RequestMapping("/only-available")
     public String onlyAvailable(Model model) {
-        ShopItemStore myStore = new ShopItemStore();
         model.addAttribute("items", myStore.filterOnlyAvailAble());
-        return "shopViewWithTable";
+        return "viewWithTable";
     }
 
     @RequestMapping("/cheapest-first")
     public String sortFromCheapest(Model model) {
-        ShopItemStore myStore = new ShopItemStore();
         model.addAttribute("items", myStore.sortFromCheapest());
-        return "shopViewWithTable";
+        return "viewWithTable";
     }
 
     @RequestMapping("/contains-nike")
     public String displayContainsNike(Model model) {
-        ShopItemStore myStore = new ShopItemStore();
         model.addAttribute("items", myStore.containsNike());
-        return "shopViewWithTable";
+        return "viewWithTable";
     }
 
     @RequestMapping("/average-stock")
     public String displayAverageStock(Model model) {
-        ShopItemStore myStore = new ShopItemStore();
         model.addAttribute("average", myStore.getAverageStock());
-        return "shopViewWithoutTable";
+        return "viewWithoutTable";
+    }
+
+    @RequestMapping("/most-expensive")
+    public String displayNameOfMostExpensiveItem(Model model) {
+        model.addAttribute("name", myStore.getNameOfMostExpensive());
+        return "viewWithMostExpensiveItem";
+    }
+
+    @RequestMapping("/search")
+    public String displaySearch(Model model,@RequestParam String search) {
+        model.addAttribute("items", myStore.searchForWord(search));
+        return "viewWithTable";
     }
 }
