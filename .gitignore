@@ -28,7 +28,6 @@ hs_err_pid*
 .idea
 out
 * .iml
-* .html
 * .xml
 *.iml
 d*.iml
