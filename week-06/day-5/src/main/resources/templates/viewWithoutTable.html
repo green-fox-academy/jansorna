@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>My Shop</h1>
+<table>
+    <thead>
+    <tr>
+        <th><form method="get" action="/only-available"><input type="submit" value="Only Available"></form></th>
+        <th><form method="get" action="/cheapest-first"><input type="submit" value="Cheapest first"></form></th>
+        <th><form method="get" action="/contains-nike"><input type="submit" value="Contains Nike"></form></th>
+        <th><form method="get" action="/average-stock"><input type="submit" value="Average stock"></form></th>
+        <th><form method="get" action="/most-expensive"><input type="submit" value="Most expensive available"></form></th>
+    </tr>
+    </thead>
+</table>
+
+<form method="post" action="/search">
+    <input name="search" type="text">
+    <input type="submit" value="SEARCH">
+</form>
+
+    <p th:text="'Average stock: ' + ${average}"/>
+
+</body>
+</html>

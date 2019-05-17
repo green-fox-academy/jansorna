@@ -33,10 +33,8 @@ out
 d*.iml
 
 # Testing in Gradle
-
 .gradle
 gradle
-resources
 build.gradle
 gradlew
 gradlew.bat

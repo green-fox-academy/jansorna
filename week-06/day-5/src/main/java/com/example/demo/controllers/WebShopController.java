@@ -12,6 +12,12 @@ public class WebShopController {
 
     ShopItemStore myStore = new ShopItemStore();
 
+    @RequestMapping()
+    public String basicWebShopWithoutAnything(Model model) {
+        model.addAttribute("items", myStore.getShopItemsList());
+        return "viewWithTable";
+    }
+
     @RequestMapping("/webshop")
     public String basicWebShop(Model model) {
         model.addAttribute("items", myStore.getShopItemsList());
