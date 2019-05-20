@@ -1,29 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Thymeleaf Exercise #</title>
-    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <title>Bank of Simba</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="utf-8"/>
 </head>
 <body>
 
-<table>
-
+<table class="table">
+    <thead class="thead-dark">
     <tr>
         <th>Index</th>
         <th>Owner</th>
         <th>Balance</th>
         <th>Animal Type</th>
         <th>King</th>
-    <tr th:each="account : ${listOfAccount}" th:style="${account.isKing()}? ${shiny}">
+        <th>Good/Bad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="account : ${listOfAccount}" th:style="${account.isKing()}? ${shiny}" >
         <td th:text="${accountStat.index}"></td>
         <td th:text="*{account.getName()}"></td>
         <td th:text="|*{#numbers.formatDecimal(account.getBalance(), 1, 'POINT', 2, 'COMMA')} ${currency}|"></td>
         <td th:text="*{account.getAnimalType()}"></td>
         <td th:text="*{account.isKing()}"></td>
+        <td th:text="*{account.isGood()} ? ${goodOne} : ${badOne}"></td>
     </tr>
-
-
+    </tbody>
 </table>
+
+<form action="/handle-the-form" method="post" th:object="${bankAccountTwo}">
+    Put the name of owner:
+    <input type="text" th:field="*{name}">
+    <input type="submit" value="Raise the balance!">
+</form>
+
+<form action="/addAccount" method="post" th:object="${bankAccount}" >
+        <label for="owner">Owner</label>
+        <input type="text" id="owner" th:field="*{name}" >
+
+        <label for="Balance">Balance</label>
+        <input type="number" id="Balance" th:field="*{balance}" >
+
+        <label for="animalType">Animal type</label>
+        <input type="text" id="animalType" th:field="*{animalType}" >
+
+        <label for="King">King</label>
+        <input type="checkbox" id="King" th:field="*{king}" >
+
+        <label for="goodOrBad">Good/Bad</label>
+        <input type="checkbox" id="goodOrBad" th:field="*{good}" >
+
+        <button type="submit">Save</button>
+    </form>
 </body>
 </html>
