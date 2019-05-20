@@ -15,7 +15,7 @@ public class ShowController {
     public String displayAccount(Model model){
         model.addAttribute("account", bankAccount);
         model.addAttribute("currency", "Zebra");
-        return "index";
+        return "showSingleAccount";
     }
 
 
