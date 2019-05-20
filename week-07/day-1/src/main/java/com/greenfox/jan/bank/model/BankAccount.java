@@ -10,7 +10,7 @@ public class BankAccount {
         this.balance = balance;
         this.animalType = animalType;
     }
-    
+
     public String getName() {
         return name;
     }

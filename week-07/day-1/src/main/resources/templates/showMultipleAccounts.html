@@ -10,10 +10,12 @@
 <table>
 
     <tr>
+        <th>Index</th>
         <th>Owner</th>
         <th>Balance</th>
         <th>Animal Type</th>
     <tr th:each="account : ${listOfAccount}">
+        <td th:text="${accountStat.index}"></td>
         <td th:text="*{account.getName()}"></td>
         <td th:text="|*{#numbers.formatDecimal(account.getBalance(), 1, 'POINT', 2, 'COMMA')} ${currency}|"></td>
         <td th:text="*{account.getAnimalType()}"></td>
