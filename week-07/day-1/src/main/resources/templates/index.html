@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Exercise #</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <meta charset="utf-8"/>
+</head>
+<body>
+
+<table>
+
+    <tr>
+        <th>Owner</th>
+        <th>Balance</th>
+        <th>Animal Type</th>
+    <tr th:object="${account}">
+        <td th:text="*{name}"></td>
+        <td th:text="|*{#numbers.formatDecimal(balance, 1, 'POINT', 2, 'COMMA')} ${currency}|"></td>
+        <td th:text="*{animalType}"></td>
+    </tr>
+
+
+</table>
+</body>
+</html>
