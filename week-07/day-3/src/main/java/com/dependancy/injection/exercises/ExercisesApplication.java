@@ -1,6 +1,6 @@
 package com.dependancy.injection.exercises;
 
-import com.dependancy.injection.exercises.service.MyColor;
+import com.dependancy.injection.exercises.service.color.and.implementations.MyColor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -8,9 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ExercisesApplication implements CommandLineRunner {
-
-    @Autowired
-    Printer myPrinter;
 
     @Autowired
     MyColor myColor;

@@ -1,6 +1,6 @@
-package com.dependancy.injection.exercises.service;
+package com.dependancy.injection.exercises.service.color.and.implementations;
 
-import com.dependancy.injection.exercises.Printer;
+import com.dependancy.injection.exercises.service.printer.Printer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

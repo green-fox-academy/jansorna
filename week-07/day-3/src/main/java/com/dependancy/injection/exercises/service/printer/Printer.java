@@ -1,4 +1,4 @@
-package com.dependancy.injection.exercises;
+package com.dependancy.injection.exercises.service.printer;
 
 import org.springframework.stereotype.Service;
 
