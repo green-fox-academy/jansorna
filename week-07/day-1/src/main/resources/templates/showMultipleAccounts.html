@@ -36,8 +36,12 @@
     <input type="text" th:field="*{name}">
     <input type="submit" value="Raise the balance!">
 </form>
+<br>
+<br>
+<br>
 
-<form action="/addAccount" method="post" th:object="${bankAccount}" >
+
+<form action="/addAccount" method="post" th:object="${bankAccount}" class="form-inline">
         <label for="owner">Owner</label>
         <input type="text" id="owner" th:field="*{name}" >
 
@@ -50,7 +54,7 @@
         <label for="King">King</label>
         <input type="checkbox" id="King" th:field="*{king}" >
 
-        <label for="goodOrBad">Good/Bad</label>
+        <label for="goodOrBad">Good guy</label>
         <input type="checkbox" id="goodOrBad" th:field="*{good}" >
 
         <button type="submit">Save</button>
