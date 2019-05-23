@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="">Information</a><br>
+
+<img src="greenfox.png" height="200" width="200"/>
+
+<p th:object="${fox}" th:text="'This is ' + *{name} + ' Currently living on a ' + *{drink} + ' and ' +  *{food} + '. He knows 0 tricks'"></p>
+
+<h1>Known tricks</h1>
+<ul>
+    <li>Something</li>
+    <li>Something</li>
+</ul>
+
+</body>
+</html>
