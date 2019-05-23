@@ -6,16 +6,17 @@
 </head>
 <body>
 
-<a href="">Information</a><br>
+<a th:href="'http://localhost:8080/?name=' + ${url}">Information</a><br>
+<a th:href="'http://localhost:8080/nutritionStore?name=' + ${url}">Nutrition Store</a><br>
+<a th:href="'http://localhost:8080/trickCenter?name=' + ${url}">Trick center</a><br>
 
 <img src="greenfox.png" height="200" width="200"/>
 
-<p th:object="${fox}" th:text="'This is ' + *{name} + ' Currently living on a ' + *{drink} + ' and ' +  *{food} + '. He knows 0 tricks'"></p>
+<p th:object="${fox}" th:text="'This is ' + *{name} + ' Currently living on a ' + *{drink} + ' and ' +  *{food} + '. He knows '+  *{listOfTricks.size()} + ' tricks'"></p>
 
 <h1>Known tricks</h1>
-<ul>
-    <li>Something</li>
-    <li>Something</li>
+<ul th:each="trick : ${trickList}">
+    <li th:text="${trick}"></li>
 </ul>
 
 </body>

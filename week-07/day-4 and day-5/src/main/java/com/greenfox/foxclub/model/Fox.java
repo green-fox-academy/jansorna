@@ -1,19 +1,23 @@
-package com.greenfox.foxclub.service;
+package com.greenfox.foxclub.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Fox {
     private String name;
     private List<String> listOfTricks;
     private String food;
     private String drink;
+    private String learnedTrick;
 
     public Fox(String name) {
         this.name = name;
         this.listOfTricks = new ArrayList<>();
-        this.food = "nothing";
-        this.drink = "nothing";
+    }
+
+    public Fox() {
+        this.listOfTricks = new ArrayList<>();
     }
 
     //getter and setters
@@ -47,5 +51,17 @@ public class Fox {
 
     public void setDrink(String drink) {
         this.drink = drink;
+    }
+
+    public void addTrick(String trickName){
+        this.listOfTricks.add(trickName);
+    }
+
+    public String getLearnedTrick() {
+        return learnedTrick;
+    }
+
+    public void setLearnedTrick(String learnedTrick) {
+        this.learnedTrick = learnedTrick;
     }
 }
