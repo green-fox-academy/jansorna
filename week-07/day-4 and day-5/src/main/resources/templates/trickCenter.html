@@ -8,8 +8,10 @@
 <body>
 
 <form method="post">
-    <input type="text" name="learnedTrick" placeholder="Add trick">
-    <input type="submit" value="Go!">
+    <select name="trick">
+        <option th:each="trick : ${tricks}" th:text="${trick}"></option>
+        <input type="submit" value="Add Trick">
+    </select>
 </form>
 
 </body>

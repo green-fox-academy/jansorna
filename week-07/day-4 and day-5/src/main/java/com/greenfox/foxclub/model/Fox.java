@@ -6,8 +6,8 @@ import java.util.List;
 public class Fox {
     private String name;
     private List<String> listOfTricks;
-    private String food;
-    private String drink;
+    private String meal = "nothing";
+    private String drink = "nothing";
     private String learnedTrick;
 
     public Fox() {
@@ -41,12 +41,12 @@ public class Fox {
         this.listOfTricks = listOfTricks;
     }
 
-    public String getFood() {
-        return food;
+    public String getMeal() {
+        return meal;
     }
 
-    public void setFood(String food) {
-        this.food = food;
+    public void setMeal(String meal) {
+        this.meal = meal;
     }
 
     public String getDrink() {

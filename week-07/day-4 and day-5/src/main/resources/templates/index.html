@@ -6,13 +6,13 @@
 </head>
 <body>
 
-<a th:href="'http://localhost:8080/?name=' + ${urli}">Information</a><br>
-<a th:href="'http://localhost:8080/nutritionStore?name=' + ${urli}">Nutrition Store</a><br>
-<a th:href="'http://localhost:8080/trickCenter?name=' + ${urli}">Trick center</a><br>
+<a th:href="'http://localhost:8080/?name=' + ${path}">Information</a><br>
+<a th:href="'http://localhost:8080/nutritionStore?name=' + ${path}">Nutrition Store</a><br>
+<a th:href="'http://localhost:8080/trickCenter?name=' + ${path}">Trick center</a><br>
 
 <img src="greenfox.png" height="200" width="200"/>
 
-<p th:text="'This is ' + ${fox.getName()} + ' Currently living on a ' + ${fox.getDrink()} + ' and ' +  ${fox.getFood()} + '. He knows '+  ${fox.getListOfTricks().size()} + ' tricks'"></p>
+<p th:text="'This is ' + ${fox.getName()} + ' Currently living on a ' + ${fox.getDrink()} + ' and ' +  ${fox.getMeal()} + '. He knows '+  ${fox.getListOfTricks().size()} + ' tricks'"></p>
 
 <h1>Known tricks</h1>
 <ul th:each="trick : ${trickList}">

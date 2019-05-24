@@ -24,19 +24,20 @@ public class FoxController {
 
     @PostMapping("/nutritionStore")
     public String handleStore(@RequestParam String name, @RequestParam String meal, @RequestParam String drink) {
-        foxService.findTheCorrectFox(name).setFood(meal);
+        foxService.findTheCorrectFox(name).setMeal(meal);
         foxService.findTheCorrectFox(name).setDrink(drink);
         return "redirect:/?name=" + name;
     }
 
     @GetMapping("/trickCenter")
-    public String trickCenter() {
+    public String trickCenter(Model model) {
+        model.addAttribute("tricks", Enums.tricks.values());
         return "trickCenter";
     }
 
     @PostMapping("/trickCenter")
-    public String handleCenter(@RequestParam String name, @RequestParam String learnedTrick) {
-        foxService.findTheCorrectFox(name).addTrick(learnedTrick);
+    public String handleCenter(@RequestParam String name, @RequestParam String trick) {
+        foxService.findTheCorrectFox(name).addTrick(trick);
         return "redirect:/?name=" + name;
     }
 }

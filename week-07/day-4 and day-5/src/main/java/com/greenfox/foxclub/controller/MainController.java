@@ -1,6 +1,5 @@
 package com.greenfox.foxclub.controller;
 
-import com.greenfox.foxclub.model.Fox;
 import com.greenfox.foxclub.services.FoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,18 +17,10 @@ public class MainController {
     @GetMapping("/")
     public String defaultPage(@RequestParam String name, Model model) {
 
-        if (foxService.ifFoxAlreadyExists(name)) {
             model.addAttribute("fox", foxService.findTheCorrectFox(name));
             model.addAttribute("trickList", foxService.findTheCorrectFox(name).getListOfTricks());
 
-        } else {
-            Fox createdFox = new Fox(name);
-            foxService.addFoxToFoxList(createdFox);
-            model.addAttribute("fox", createdFox);
-            model.addAttribute("trickList", createdFox.getListOfTricks());
-        }
-
-        model.addAttribute("urli", name); //prejmenovat
+        model.addAttribute("path", name);
         return "index";
     }
 
@@ -40,6 +31,10 @@ public class MainController {
 
     @PostMapping("/login")
     public String handleName(@RequestParam String name) {
-        return "redirect:/?name=" + name;
+        if (foxService.ifFoxAlreadyExists(name)){
+            return "redirect:/?name=" + name;
+        } else {
+           return "login";
+        }
     }
 }
