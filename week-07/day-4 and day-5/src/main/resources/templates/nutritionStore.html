@@ -7,22 +7,15 @@
 </head>
 <body>
 
-<form action="/nutritionStore" method="post" th:object="${fox}">
-    <select th:field="*{food}">
-        <option value="water">Water</option>
-        <option value="beer">Beer</option>
-        <option value="juice">Juice</option>
-        <option value="vodka">Vodka</option>
+<form method="post">
+    <select name="meal">
+        <option th:each="meal : ${meals}" th:text="${meal}"></option>
     </select>
-
-    <select th:field="*{drink}">
-        <option value="meat">Meat</option>
-        <option value="pizza">Pizza</option>
-        <option value="burger">Burger</option>
-        <option value="goulash">Goulash</option>
+    <select name="drink">
+        <option th:each="drink : ${drinks}" th:text="${drink}"></option>
     </select>
-
     <input type="submit" value="Change">
 </form>
+
 </body>
 </html>

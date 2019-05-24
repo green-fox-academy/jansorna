@@ -12,7 +12,7 @@
 
 <img src="greenfox.png" height="200" width="200"/>
 
-<p th:object="${fox}" th:text="'This is ' + *{name} + ' Currently living on a ' + *{drink} + ' and ' +  *{food} + '. He knows '+  *{listOfTricks.size()} + ' tricks'"></p>
+<p th:text="'This is ' + ${fox.getName()} + ' Currently living on a ' + ${fox.getDrink()} + ' and ' +  ${fox.getFood()} + '. He knows '+  ${fox.getListOfTricks().size()} + ' tricks'"></p>
 
 <h1>Known tricks</h1>
 <ul th:each="trick : ${trickList}">

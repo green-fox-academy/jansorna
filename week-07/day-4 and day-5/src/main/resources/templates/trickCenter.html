@@ -7,8 +7,8 @@
 </head>
 <body>
 
-<form action="/trickCenter" method="post" th:object="${fox}">
-    <input type="text" name="name" th:field="*{learnedTrick}" placeholder="Add trick">
+<form method="post">
+    <input type="text" name="learnedTrick" placeholder="Add trick">
     <input type="submit" value="Go!">
 </form>
 

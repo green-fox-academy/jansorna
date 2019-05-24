@@ -11,16 +11,21 @@ public class Fox {
     private String drink;
     private String learnedTrick;
 
+    public Fox() {
+        this.listOfTricks = new ArrayList<>();
+    }
+
     public Fox(String name) {
         this.name = name;
         this.listOfTricks = new ArrayList<>();
     }
 
-    public Fox() {
-        this.listOfTricks = new ArrayList<>();
+    public void addTrick(String trickName){
+        this.listOfTricks.add(trickName);
     }
 
     //getter and setters
+
     public String getName() {
         return name;
     }
@@ -51,10 +56,6 @@ public class Fox {
 
     public void setDrink(String drink) {
         this.drink = drink;
-    }
-
-    public void addTrick(String trickName){
-        this.listOfTricks.add(trickName);
     }
 
     public String getLearnedTrick() {
