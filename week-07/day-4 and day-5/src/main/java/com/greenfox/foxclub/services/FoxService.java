@@ -11,8 +11,6 @@ import java.util.stream.Collectors;
 public class FoxService {
 
     private List<Fox> foxList;
-    private Fox theChosenFox;
-    private String nameOfPet;
 
     public FoxService() {
         this.foxList = new ArrayList<>();
@@ -33,7 +31,7 @@ public class FoxService {
         this.foxList.add(addedFox);
     }
 
-    public boolean theFoxAlreadyExists(String name){
+    public boolean ifFoxAlreadyExists(String name){
         return foxList.stream()
                 .map(a -> a.getName())
                 .collect(Collectors.toList()).contains(name);
@@ -43,24 +41,6 @@ public class FoxService {
         List<Fox> theChosenFoxList = foxList.stream()
                 .filter(a -> a.getName().equals(name))
                 .collect(Collectors.toList());
-        return theChosenFox = theChosenFoxList.get(0);
-    }
-
-    //getters and setters
-
-    public List<Fox> getFoxList() {
-        return foxList;
-    }
-
-    public void setFoxList(List<Fox> foxList) {
-        this.foxList = foxList;
-    }
-
-    public String getNameOfPet() {
-        return nameOfPet;
-    }
-
-    public void setNameOfPet(String name) {
-        this.nameOfPet = name;
+        return theChosenFoxList.get(0);
     }
 }

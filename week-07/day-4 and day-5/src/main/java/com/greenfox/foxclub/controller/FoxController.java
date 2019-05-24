@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class FoxController {
@@ -17,34 +16,27 @@ public class FoxController {
     FoxService foxService;
 
     @GetMapping("/nutritionStore")
-    public String nutritionStore(@RequestParam String name, Model model) {
-
-        foxService.setNameOfPet(name);
-
+    public String nutritionStore(Model model) {
         model.addAttribute("meals", Enums.meals.values());
-        model.addAttribute("drinks", Enums.drinks.values()); //poslu do html name a d8m ho do th:action s @/... a pak v post m8m Request param
-
+        model.addAttribute("drinks", Enums.drinks.values());
         return "nutritionStore";
     }
 
     @PostMapping("/nutritionStore")
-    public String handleStore(@RequestParam String meal, @RequestParam String drink, RedirectAttributes redirectAttributes) {
-        foxService.findTheCorrectFox(foxService.getNameOfPet()).setFood(meal);
-        foxService.findTheCorrectFox(foxService.getNameOfPet()).setDrink(drink);
-        redirectAttributes.addAttribute("name", foxService.getNameOfPet());
-        return "redirect:/";
+    public String handleStore(@RequestParam String name, @RequestParam String meal, @RequestParam String drink) {
+        foxService.findTheCorrectFox(name).setFood(meal);
+        foxService.findTheCorrectFox(name).setDrink(drink);
+        return "redirect:/?name=" + name;
     }
 
     @GetMapping("/trickCenter")
-    public String trickCenter(@RequestParam String name, Model model) {
-        foxService.setNameOfPet(name);
+    public String trickCenter() {
         return "trickCenter";
     }
 
     @PostMapping("/trickCenter")
-    public String handleCenter(@RequestParam String learnedTrick, RedirectAttributes redirectAttributes) {
-        foxService.findTheCorrectFox(foxService.getNameOfPet()).addTrick(learnedTrick);
-        redirectAttributes.addAttribute("name", foxService.getNameOfPet());
-        return "redirect:/";
+    public String handleCenter(@RequestParam String name, @RequestParam String learnedTrick) {
+        foxService.findTheCorrectFox(name).addTrick(learnedTrick);
+        return "redirect:/?name=" + name;
     }
 }

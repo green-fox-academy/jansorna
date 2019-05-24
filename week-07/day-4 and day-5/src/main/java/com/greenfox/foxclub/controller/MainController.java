@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class MainController {
@@ -19,7 +18,7 @@ public class MainController {
     @GetMapping("/")
     public String defaultPage(@RequestParam String name, Model model) {
 
-        if (foxService.theFoxAlreadyExists(name)) {
+        if (foxService.ifFoxAlreadyExists(name)) {
             model.addAttribute("fox", foxService.findTheCorrectFox(name));
             model.addAttribute("trickList", foxService.findTheCorrectFox(name).getListOfTricks());
 
@@ -30,7 +29,7 @@ public class MainController {
             model.addAttribute("trickList", createdFox.getListOfTricks());
         }
 
-        model.addAttribute("url", name); //prejmenovat
+        model.addAttribute("urli", name); //prejmenovat
         return "index";
     }
 
@@ -40,8 +39,7 @@ public class MainController {
     }
 
     @PostMapping("/login")
-    public String handleName(@RequestParam String name, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addAttribute("name", name);
-        return "redirect:/";
+    public String handleName(@RequestParam String name) {
+        return "redirect:/?name=" + name;
     }
 }
