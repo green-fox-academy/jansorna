@@ -1,12 +1,12 @@
 package com.greenfox.jan.mysql.controllers;
 
+import com.greenfox.jan.mysql.models.ToDo;
 import com.greenfox.jan.mysql.repositories.ToDoRepository;
 import com.greenfox.jan.mysql.services.ToDoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/todo")
 @Controller
@@ -29,5 +29,17 @@ public class ToDoController {
             model.addAttribute("todos", service.getAllToDos());
         }
         return "todolist";
+    }
+
+    @GetMapping("add")
+    public String add(Model model){
+        model.addAttribute("newToDo", new ToDo());
+        return "add";
+    }
+
+    @PostMapping("add")
+    public String handleNewToDo(Model model, @ModelAttribute ToDo newToDo){
+        service.addToDo(newToDo);
+        return "redirect:/todo/";
     }
 }

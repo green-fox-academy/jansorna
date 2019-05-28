@@ -29,6 +29,10 @@ public class ToDoService {
         return inputList.stream().filter(a -> !a.isDone()).collect(Collectors.toList());
     }
 
+    public void addToDo(ToDo newToDo){
+        repo.save(newToDo);
+    }
+
 
 
 }
