@@ -28,14 +28,4 @@ public class ToDoService {
     public List<ToDo> getUnFinished(List<ToDo> inputList) {
         return inputList.stream().filter(a -> !a.isDone()).collect(Collectors.toList());
     }
-
-    public void addToDo(ToDo newToDo) {
-        repo.save(newToDo);
-    }
-
-    public void deleteToDo(Long id) {
-        repo.deleteById(id);
-    }
-
-
 }

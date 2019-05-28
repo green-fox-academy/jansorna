@@ -17,7 +17,8 @@
         <td>ACTION</td>
         <td>DONE</td>
         <td>URGENT</td>
-        <td>Delete</td>
+        <td>DELETE</td>
+        <td>EDIT</td>
     </tr>
     </thead>
     <tbody>
@@ -28,6 +29,9 @@
         <td th:text="${todo.isUrgent()}"></td>
         <td>
             <a th:href="@{'/todo/{id}/delete'(id=${todo.getId()})}">Delete</a>
+        </td>
+        <td>
+            <a th:href="@{'/todo/{id}/edit'(id=${todo.getId()})}">Edit</a>
         </td>
     </tr>
     </tbody>

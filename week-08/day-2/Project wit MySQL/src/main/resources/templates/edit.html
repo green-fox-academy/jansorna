@@ -9,7 +9,7 @@
 
 <h1>Add new ToDo</h1>
 
-<form method="post" th:object="${newToDo}">
+<form method="post" th:object="${editToDo}">
     <input type="text" th:field="*{title}"><br>
     Done<input type="checkbox" th:field="*{done}"><br>
     Urgent<input type="checkbox" th:field="*{urgent}"><br>

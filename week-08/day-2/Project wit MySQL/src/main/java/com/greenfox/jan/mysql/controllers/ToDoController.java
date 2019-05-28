@@ -26,7 +26,7 @@ public class ToDoController {
         if (isActive) {
             model.addAttribute("todos", service.getUnFinished(service.getAllToDos()));
         } else {
-            model.addAttribute("todos", service.getAllToDos());
+            model.addAttribute("todos", repo.findAll());
         }
         return "todolist";
     }
@@ -38,14 +38,26 @@ public class ToDoController {
     }
 
     @PostMapping("add")
-    public String handleNewToDo(Model model, @ModelAttribute ToDo newToDo){
-        service.addToDo(newToDo);
+    public String handleNewToDo(@ModelAttribute ToDo newToDo){
+        repo.save(newToDo);
         return "redirect:/todo/";
     }
 
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable long id){
-        service.deleteToDo(id);
+        repo.deleteById(id);
+        return "redirect:/todo/";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable long id){
+        model.addAttribute("editToDo", repo.findById(id).get());
+        return "edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String handleEditToDo(@ModelAttribute ToDo editToDo){
+        repo.save(editToDo);
         return "redirect:/todo/";
     }
 }
