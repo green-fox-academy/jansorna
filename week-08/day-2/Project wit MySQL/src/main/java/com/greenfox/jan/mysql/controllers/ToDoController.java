@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.time.LocalDateTime;
 
 @RequestMapping("/todo")
 @Controller
@@ -39,6 +40,7 @@ public class ToDoController {
 
     @PostMapping("add")
     public String handleNewToDo(@ModelAttribute ToDo newToDo){
+        newToDo.setCreationDate(LocalDateTime.now());
         repo.save(newToDo);
         return "redirect:/todo/";
     }
@@ -59,5 +61,11 @@ public class ToDoController {
     public String handleEditToDo(@ModelAttribute ToDo editToDo){
         repo.save(editToDo);
         return "redirect:/todo/";
+    }
+
+    @GetMapping("/{id}/detail")
+    public String detail(Model model, @PathVariable long id){
+        model.addAttribute("todo", repo.findById(id).get());
+        return "detail";
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>ToDo</title>
+    <title>Detail</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -15,29 +15,21 @@
         <td>ACTION</td>
         <td>DONE</td>
         <td>URGENT</td>
-        <td>DELETE</td>
-        <td>EDIT</td>
+        <td>DATE OF CREATION</td>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="todo : ${todos}">
+    <tr>
         <td th:text="${todo.getId()}"></td>
-        <td>
-            <a th:href="@{'/todo/{id}/detail'(id=${todo.getId()})}" th:text="${todo.getTitle()}"></a>
-        </td>
+        <td th:text="${todo.getTitle()}"></td>
         <td th:text="${todo.isDone()}"></td>
         <td th:text="${todo.isUrgent()}"></td>
-        <td>
-            <a th:href="@{'/todo/{id}/delete'(id=${todo.getId()})}">Delete</a>
-        </td>
-        <td>
-            <a th:href="@{'/todo/{id}/edit'(id=${todo.getId()})}">Edit</a>
-        </td>
+        <td th:text="${todo.getCreationDate()}"></td>
     </tr>
     </tbody>
 </table>
 
-<a href="/todo/add">Add new ToDo</a>
+<a href="/todo/">get Back</a>
 
 </body>
 </html>

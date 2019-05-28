@@ -3,6 +3,7 @@ package com.greenfox.jan.mysql.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 public class ToDo {
@@ -14,6 +15,7 @@ public class ToDo {
     private String title;
     private boolean isUrgent = false;
     private boolean isDone = false;
+    private LocalDateTime creationDate;
 
     public ToDo() {
     }
@@ -65,5 +67,13 @@ public class ToDo {
 
     public void setDone(boolean done) {
         this.isDone = done;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 }
