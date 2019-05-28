@@ -20,19 +20,22 @@ public class ToDoService {
     }
 
     public List<ToDo> getAllToDos() {
-       List<ToDo> allToDos= new ArrayList<>();
-       repo.findAll().forEach(allToDos::add);
-       return allToDos;
+        List<ToDo> allToDos = new ArrayList<>();
+        repo.findAll().forEach(allToDos::add);
+        return allToDos;
     }
 
     public List<ToDo> getUnFinished(List<ToDo> inputList) {
         return inputList.stream().filter(a -> !a.isDone()).collect(Collectors.toList());
     }
 
-    public void addToDo(ToDo newToDo){
+    public void addToDo(ToDo newToDo) {
         repo.save(newToDo);
     }
 
+    public void deleteToDo(Long id) {
+        repo.deleteById(id);
+    }
 
 
 }

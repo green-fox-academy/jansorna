@@ -42,4 +42,10 @@ public class ToDoController {
         service.addToDo(newToDo);
         return "redirect:/todo/";
     }
+
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable long id){
+        service.deleteToDo(id);
+        return "redirect:/todo/";
+    }
 }
