@@ -59,6 +59,7 @@ public class ToDoController {
 
     @PostMapping("/{id}/edit")
     public String handleEditToDo(@ModelAttribute ToDo editToDo){
+        editToDo.setCreationDate(LocalDateTime.now());
         repo.save(editToDo);
         return "redirect:/todo/";
     }

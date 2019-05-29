@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <meta charset="UTF-8">
     <title>Add new ToDo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 </head>
+
 <body>
+    <div class="container">
+        <h1>Add new ToDo</h1>
+    </div>
 
-<h1>Add new ToDo</h1>
+    <div class="container">
+        <div class="form-group">
+            <form method="post" th:object="${newToDo}">
+                <label for="title" class="form-check-label">Task</label><br>
+                <input type="text" class="form-check-input" th:field="*{title}" id="title">
+                <br>
+                <br>
+            <div class="form-group form-check">
+                <label for="done" class="form-check-label">Done</label><br>
+                <input type="checkbox" th:field="*{done}" id="done"><br>
 
-<form method="post" th:object="${newToDo}">
-    <input type="text" th:field="*{title}"><br>
-    Done<input type="checkbox" th:field="*{done}"><br>
-    Urgent<input type="checkbox" th:field="*{urgent}"><br>
-    <input type="submit" value="Submit">
-</form>
+                <label for="urgent" class="form-check-label">Urgent</label><br>
+                <input type="checkbox" th:field="*{urgent}" id="urgent"><br>
+            </div>
 
-<a href="/todo/">Cancel</a>
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        </div>
+    <div class="container">
+        <a href="/todo/" class="material-icons" style="font-size: 50px">keyboard_backspace</a>
+    </div>
 
 </body>
 </html>
