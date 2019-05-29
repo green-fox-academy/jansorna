@@ -19,18 +19,18 @@
             <thead class="thead-dark" style="text-align: left">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">ACTION</td>
-                    <th scope="col">DONE</td>
-                    <th scope="col">URGENT</td>
-                    <th scope="col"></td>
-                    <th scope="col"></td>
+                    <th scope="col">ACTION</th>
+                    <th scope="col">DONE</th>
+                    <th scope="col">URGENT</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr scope="row" th:each="todo : ${todos}">
                         <td th:text="${todo.getId()}"></td>
                         <td>
-                            <a th:href="@{'/todo/{id}/detail'(id=${todo.getId()})}" th:text="${todo.getTitle()}"></a>
+                            <a th:href="@{'/{id}/detail'(id=${todo.getId()})}" th:text="${todo.getTitle()}"></a>
                         </td>
                         <td th:switch="${todo.isDone()}">
                             <p th:case="true" class="material-icons" style="color: green; font-size: 40px">done</p>
@@ -40,10 +40,10 @@
                             <p th:case="true" class="material-icons" ; style="font-size: 50px">notification_important</p>
                         </td>
                         <td>
-                            <a th:href="@{'/todo/{id}/delete'(id=${todo.getId()})}" class="material-icons" style="color: black; font-size: 40px">delete</a>
+                            <a th:href="@{'/{id}/delete'(id=${todo.getId()})}" class="material-icons" style="color: black; font-size: 40px">delete</a>
                         </td>
                         <td>
-                            <a th:href="@{'/todo/{id}/edit'(id=${todo.getId()})}" class="btn btn-info btn-sm">Edit</a>
+                            <a th:href="@{'/{id}/edit'(id=${todo.getId()})}" class="btn btn-info btn-sm">Edit</a>
                         </td>
                 </tr>
             </tbody>
@@ -51,7 +51,12 @@
     </div>
 
     <div class="container">
-        <a href="/todo/add" class="material-icons" style="color: blue; font-size: 50px">create_new_folder</a>
+        <a href="/add" class="material-icons" style="color: blue; font-size: 50px">create_new_folder</a>
+    </div>
+
+    <div class="container">
+        <a th:if="${active} == false" href="/?isActive=true" class="btn btn-info btn-sm">Show only unfinished ToDos</a>
+        <a th:if="${active} == true" href="/" class="btn btn-info btn-sm">Show all ToDos</a>
     </div>
 
 </body>

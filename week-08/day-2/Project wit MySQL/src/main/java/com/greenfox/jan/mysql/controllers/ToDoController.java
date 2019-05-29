@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
-@RequestMapping("/todo")
 @Controller
 public class ToDoController {
 
@@ -26,8 +25,11 @@ public class ToDoController {
     public String list(Model model, @RequestParam(required = false) boolean isActive) {
         if (isActive) {
             model.addAttribute("todos", service.getUnFinished(service.getAllToDos()));
+            model.addAttribute("active", true);
         } else {
             model.addAttribute("todos", repo.findAll());
+            model.addAttribute("active", false);
+
         }
         return "todolist";
     }
@@ -42,13 +44,13 @@ public class ToDoController {
     public String handleNewToDo(@ModelAttribute ToDo newToDo){
         newToDo.setCreationDate(LocalDateTime.now());
         repo.save(newToDo);
-        return "redirect:/todo/";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable long id){
         repo.deleteById(id);
-        return "redirect:/todo/";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}/edit")
@@ -61,7 +63,7 @@ public class ToDoController {
     public String handleEditToDo(@ModelAttribute ToDo editToDo){
         editToDo.setCreationDate(LocalDateTime.now());
         repo.save(editToDo);
-        return "redirect:/todo/";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}/detail")

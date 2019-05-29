@@ -8,18 +8,34 @@
 </head>
 <body>
 
-<h1>Add new ToDo</h1>
+    <div class="container">
+        <h1>Edit ToDo</h1>
+    </div>
+    <div class="container">
 
-<form method="post" th:object="${editToDo}">
-    <input type="text" th:field="*{title}"><br>
-    Done<input type="checkbox" th:field="*{done}"><br>
-    Urgent<input type="checkbox" th:field="*{urgent}"><br>
-    <input type="submit" value="Submit">
-</form>
+        <form method="post" th:object="${editToDo}">
 
-<div class="container">
-    <a href="/todo/" class="material-icons" style="font-size: 50px">keyboard_backspace</a>
-</div>
+            <div class="form-group">
+                <label for="title">ToDo</label><br>
+                <input type="text" class="form-control" th:field="*{title}" id="title">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" th:field="*{done}" id="done">
+                <label for="done" class="form-check-label">Done</label><br>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" th:field="*{urgent}" id="urgent">
+                <label for="urgent" class="form-check-label">Urgent</label>
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+
+    </div>
+
+    <div class="container">
+        <a href="/" class="material-icons" style="font-size: 50px">keyboard_backspace</a>
+    </div>
 
 </body>
 </html>

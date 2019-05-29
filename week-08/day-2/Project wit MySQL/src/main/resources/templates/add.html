@@ -15,25 +15,29 @@
     </div>
 
     <div class="container">
-        <div class="form-group">
-            <form method="post" th:object="${newToDo}">
-                <label for="title" class="form-check-label">Task</label><br>
-                <input type="text" class="form-check-input" th:field="*{title}" id="title">
-                <br>
-                <br>
-            <div class="form-group form-check">
-                <label for="done" class="form-check-label">Done</label><br>
-                <input type="checkbox" th:field="*{done}" id="done"><br>
 
-                <label for="urgent" class="form-check-label">Urgent</label><br>
-                <input type="checkbox" th:field="*{urgent}" id="urgent"><br>
+        <form method="post" th:object="${newToDo}">
+
+            <div class="form-group">
+                <label for="title">ToDo</label><br>
+                <input type="text" class="form-control" th:field="*{title}" id="title">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" th:field="*{done}" id="done">
+                <label for="done" class="form-check-label">Done</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" th:field="*{urgent}" id="urgent">
+                <label for="urgent" class="form-check-label">Urgent</label>
             </div>
 
                 <input type="submit" class="btn btn-primary" value="Submit">
             </form>
-        </div>
+
+    </div>
+
     <div class="container">
-        <a href="/todo/" class="material-icons" style="font-size: 50px">keyboard_backspace</a>
+        <a href="/" class="material-icons" style="font-size: 50px">keyboard_backspace</a>
     </div>
 
 </body>
