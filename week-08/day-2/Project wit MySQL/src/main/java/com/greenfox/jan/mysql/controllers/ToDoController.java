@@ -2,7 +2,6 @@ package com.greenfox.jan.mysql.controllers;
 
 import com.greenfox.jan.mysql.models.ToDo;
 import com.greenfox.jan.mysql.repositories.ToDoRepository;
-import com.greenfox.jan.mysql.services.ToDoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,21 +13,19 @@ import java.time.LocalDateTime;
 public class ToDoController {
 
     private ToDoRepository repo;
-    private ToDoService service;
 
     @Autowired
-    public ToDoController(ToDoRepository repo, ToDoService service) {
+    public ToDoController(ToDoRepository repo) {
         this.repo = repo;
-        this.service = service;
     }
 
     @RequestMapping(value = {"/", "/list"})
     public String list(Model model, @RequestParam(required = false) boolean isActive) {
         if (isActive) {
-            model.addAttribute("todos", service.getUnFinished(service.getAllToDos()));
+            model.addAttribute("todos", repo.findAllByDoneIsFalseOrderById());
             model.addAttribute("active", true);
         } else {
-            model.addAttribute("todos", repo.findAll());
+            model.addAttribute("todos", repo.findAllByIdGreaterThanOrderById(0l));
             model.addAttribute("active", false);
 
         }
@@ -60,7 +57,7 @@ public class ToDoController {
         return "edit";
     }
 
-    @PostMapping("/{id}/edit")
+    @PostMapping("/edit")
     public String handleEditToDo(@ModelAttribute ToDo editToDo){
         editToDo.setCreationDate(LocalDateTime.now());
         repo.save(editToDo);
@@ -71,5 +68,12 @@ public class ToDoController {
     public String detail(Model model, @PathVariable long id){
         model.addAttribute("todo", repo.findById(id).get());
         return "detail";
+    }
+
+    @RequestMapping("/search")
+    public String displaySearch(Model model,@RequestParam String search) {
+        model.addAttribute("todos", repo.findAllByTitleLikeIgnoreCaseOrderById( "%" + search + "%"));
+        model.addAttribute("active", false);
+        return "searchedlist";
     }
 }

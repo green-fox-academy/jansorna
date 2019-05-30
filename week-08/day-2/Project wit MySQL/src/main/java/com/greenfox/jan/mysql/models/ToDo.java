@@ -13,8 +13,8 @@ public class ToDo {
     private long id;
 
     private String title;
-    private boolean isUrgent = false;
-    private boolean isDone = false;
+    private boolean urgent = false;
+    private boolean done = false;
     private LocalDateTime creationDate;
 
     public ToDo() {
@@ -24,10 +24,10 @@ public class ToDo {
         this.title = title;
     }
 
-    public ToDo(String title, boolean isUrgent, boolean isDone) {
+    public ToDo(String title, boolean urgent, boolean done) {
         this.title = title;
-        this.isUrgent = isUrgent;
-        this.isDone = isDone;
+        this.urgent = urgent;
+        this.done = done;
     }
 
     @Override
@@ -54,19 +54,19 @@ public class ToDo {
     }
 
     public boolean isUrgent() {
-        return isUrgent;
+        return urgent;
     }
 
     public void setUrgent(boolean urgent) {
-        this.isUrgent = urgent;
+        this.urgent = urgent;
     }
 
     public boolean isDone() {
-        return isDone;
+        return done;
     }
 
     public void setDone(boolean done) {
-        this.isDone = done;
+        this.done = done;
     }
 
     public LocalDateTime getCreationDate() {

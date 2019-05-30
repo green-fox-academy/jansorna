@@ -4,8 +4,9 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>To Do Application</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title> Found ToDos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
@@ -14,29 +15,43 @@
 <div class="container">
     <h1>Todos for Today:</h1>
 </div>
+
+<div class="container">
+    <h2>Results of Search:</h2>
+</div>
+
 <div class="container">
     <table class="table table-striped table-bordered" style="text-align: center; font-size: 20px">
         <thead class="thead-dark" style="text-align: left">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">ACTION</td>
-            <th scope="col">DONE</td>
-            <th scope="col">URGENT</td>
-            <th scope="col">DATE OF CREATION</td>
+            <th scope="col">ACTION</th>
+            <th scope="col">DONE</th>
+            <th scope="col">URGENT</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        <tr scope="row">
+        <tr scope="row" th:each="todo : ${todos}">
             <td th:text="${todo.getId()}"></td>
-            <td th:text="${todo.getTitle()}"></td>
-            <td th:switch="${todo.done()}">
+            <td>
+                <a th:href="@{'/todo/{id}/detail'(id=${todo.getId()})}" th:text="${todo.getTitle()}"></a>
+            </td>
+            <td th:switch="${todo.isDone()}">
                 <p th:case="true" class="material-icons" style="color: green; font-size: 40px">done</p>
                 <p th:case="false" class="material-icons" style="color: red; font-size: 40px">clear</p>
             </td>
-            <td th:switch="${todo.urgent()}">
+            <td th:switch="${todo.isUrgent()}">
                 <p th:case="true" class="material-icons" ; style="font-size: 50px">notification_important</p>
             </td>
-            <td th:text="${todo.getCreationDate()}"></td>
+            <td>
+                <a th:href="@{'/todo/{id}/delete'(id=${todo.getId()})}" class="material-icons"
+                   style="color: black; font-size: 40px">delete</a>
+            </td>
+            <td>
+                <a th:href="@{'/todo/{id}/edit'(id=${todo.getId()})}" class="btn btn-info btn-sm">Edit</a>
+            </td>
         </tr>
         </tbody>
     </table>
