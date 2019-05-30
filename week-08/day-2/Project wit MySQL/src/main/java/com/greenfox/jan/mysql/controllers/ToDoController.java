@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 @Controller
+@RequestMapping("/todo")
 public class ToDoController {
 
     private ToDoRepository repo;
@@ -44,13 +45,13 @@ public class ToDoController {
     public String handleNewToDo(@ModelAttribute ToDo newToDo){
         newToDo.setCreationDate(LocalDateTime.now());
         repo.save(newToDo);
-        return "redirect:/";
+        return "redirect:/todo/";
     }
 
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable long id){
         repo.deleteById(id);
-        return "redirect:/";
+        return "redirect:/todo/";
     }
 
     @GetMapping("/{id}/edit")
@@ -63,7 +64,7 @@ public class ToDoController {
     public String handleEditToDo(@ModelAttribute ToDo editToDo){
         editToDo.setCreationDate(LocalDateTime.now());
         repo.save(editToDo);
-        return "redirect:/";
+        return "redirect:/todo/";
     }
 
     @GetMapping("/{id}/detail")
