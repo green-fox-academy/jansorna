@@ -12,68 +12,67 @@ import java.time.LocalDateTime;
 @RequestMapping("/todo")
 public class ToDoController {
 
-    private ToDoRepository repo;
+    private ToDoRepository toDoRepo;
 
     @Autowired
-    public ToDoController(ToDoRepository repo) {
-        this.repo = repo;
+    public ToDoController(ToDoRepository toDoRepo) {
+        this.toDoRepo = toDoRepo;
     }
 
     @RequestMapping(value = {"/", "/list"})
     public String list(Model model, @RequestParam(required = false) boolean isActive) {
         if (isActive) {
-            model.addAttribute("todos", repo.findAllByDoneIsFalseOrderById());
+            model.addAttribute("todos", toDoRepo.findAllByDoneIsFalseOrderById());
             model.addAttribute("active", true);
         } else {
-            model.addAttribute("todos", repo.findAllByIdGreaterThanOrderById(0l));
+            model.addAttribute("todos", toDoRepo.findAllByIdGreaterThanOrderById(0l));
             model.addAttribute("active", false);
-
         }
-        return "todolist";
+        return "todo/todolist";
     }
 
     @GetMapping("add")
     public String add(Model model){
         model.addAttribute("newToDo", new ToDo());
-        return "add";
+        return "todo/add";
     }
 
     @PostMapping("add")
     public String handleNewToDo(@ModelAttribute ToDo newToDo){
         newToDo.setCreationDate(LocalDateTime.now());
-        repo.save(newToDo);
+        toDoRepo.save(newToDo);
         return "redirect:/todo/";
     }
 
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable long id){
-        repo.deleteById(id);
+        toDoRepo.deleteById(id);
         return "redirect:/todo/";
     }
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable long id){
-        model.addAttribute("editToDo", repo.findById(id).get());
-        return "edit";
+        model.addAttribute("editToDo", toDoRepo.findById(id).get());
+        return "todo/edit";
     }
 
     @PostMapping("/edit")
     public String handleEditToDo(@ModelAttribute ToDo editToDo){
         editToDo.setCreationDate(LocalDateTime.now());
-        repo.save(editToDo);
+        toDoRepo.save(editToDo);
         return "redirect:/todo/";
     }
 
     @GetMapping("/{id}/detail")
     public String detail(Model model, @PathVariable long id){
-        model.addAttribute("todo", repo.findById(id).get());
-        return "detail";
+        model.addAttribute("todo", toDoRepo.findById(id).get());
+        return "todo/detail";
     }
 
     @RequestMapping("/search")
     public String displaySearch(Model model,@RequestParam String search) {
-        model.addAttribute("todos", repo.findAllByTitleLikeIgnoreCaseOrderById( "%" + search + "%"));
+        model.addAttribute("todos", toDoRepo.findAllByTitleLikeIgnoreCaseOrderById( "%" + search + "%"));
         model.addAttribute("active", false);
-        return "searchedlist";
+        return "todo/searchedlist";
     }
 }
