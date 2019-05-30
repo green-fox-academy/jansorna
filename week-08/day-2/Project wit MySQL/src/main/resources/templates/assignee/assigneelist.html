@@ -34,6 +34,7 @@
             <th scope="col">ID</th>
             <th scope="col">NAME</th>
             <th scope="col">EMAIL</th>
+            <th scope="col">ToDos</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -45,6 +46,7 @@
                 <a th:href="@{'/assignee/{id}/detail'(id=${assignee.getId()})}" th:text="${assignee.getName()}"></a>
             </td>
             <td th:text="${assignee.getEmail()}"></td>
+            <td th:text="${assignee.getTodos()}"></td>
             <td>
                 <a th:href="@{'/assignee/{id}/delete'(id=${assignee.getId()})}" class="material-icons"
                    style="color: black; font-size: 40px">delete</a>

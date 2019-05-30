@@ -31,7 +31,12 @@
                 <label for="urgent" class="form-check-label">Urgent</label>
             </div>
 
-                <input type="submit" class="btn btn-primary" value="Submit">
+            <select name="assignee">
+                <option th:each="assignee : ${assignees}" th:text="${assignee.name}" th:value="${assignee.id}" class="form-control"></option>
+            </select><br>
+
+
+            <input type="submit" class="btn btn-primary" value="Submit">
             </form>
 
     </div>

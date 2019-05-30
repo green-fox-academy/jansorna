@@ -35,6 +35,7 @@
             <th scope="col">ACTION</th>
             <th scope="col">DONE</th>
             <th scope="col">URGENT</th>
+            <th scope="col">ASSIGNEE</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -52,6 +53,7 @@
             <td th:switch="${todo.isUrgent()}">
                 <p th:case="true" class="material-icons" ; style="font-size: 50px">notification_important</p>
             </td>
+            <td th:text="${todo.getAssignee().getName()}"></td>
             <td>
                 <a th:href="@{'/todo/{id}/delete'(id=${todo.getId()})}" class="material-icons"
                    style="color: black; font-size: 40px">delete</a>

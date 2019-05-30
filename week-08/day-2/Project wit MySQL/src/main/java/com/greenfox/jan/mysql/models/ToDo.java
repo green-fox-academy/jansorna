@@ -15,7 +15,7 @@ public class ToDo {
     private boolean done = false;
     private LocalDateTime creationDate;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne()
     private Assignee assignee;
 
     public ToDo() {

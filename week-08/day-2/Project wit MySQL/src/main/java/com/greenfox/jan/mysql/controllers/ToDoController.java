@@ -38,6 +38,7 @@ public class ToDoController {
     @GetMapping("add")
     public String add(Model model){
         model.addAttribute("newToDo", new ToDo());
+        model.addAttribute("assignees", assigneeRepo.findAll());
         return "todo/add";
     }
 

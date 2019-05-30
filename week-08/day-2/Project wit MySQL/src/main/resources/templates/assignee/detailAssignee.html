@@ -21,6 +21,7 @@
             <th scope="col">ID</th>
             <th scope="col">NAME</td>
             <th scope="col">EMAIL</td>
+            <th scope="col">ToDos</td>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
             <td th:text="${assignee.getId()}"></td>
             <td th:text="${assignee.getName()}"></td>
             <td th:text="${assignee.getEmail()}"></td>
+            <td th:text="${assignee.getTodos()}"></td>
         </tr>
         </tbody>
     </table>

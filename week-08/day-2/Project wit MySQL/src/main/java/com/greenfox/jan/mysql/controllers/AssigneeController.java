@@ -2,6 +2,7 @@ package com.greenfox.jan.mysql.controllers;
 
 import com.greenfox.jan.mysql.models.Assignee;
 import com.greenfox.jan.mysql.repositories.AssigneeRepository;
+import com.greenfox.jan.mysql.repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class AssigneeController {
 
     private AssigneeRepository assigneeRepo;
+    private ToDoRepository toDoRepo;
 
     @Autowired
-    public AssigneeController(AssigneeRepository assigneeRepo) {
+    public AssigneeController(AssigneeRepository assigneeRepo, ToDoRepository toDoRepo) {
         this.assigneeRepo = assigneeRepo;
+        this.toDoRepo = toDoRepo;
     }
 
     @RequestMapping(value = {"/", "/list"})
@@ -27,6 +30,7 @@ public class AssigneeController {
     @GetMapping("add")
     public String add(Model model){
         model.addAttribute("newAssignee", new Assignee());
+        model.addAttribute("todos", toDoRepo.findAll());
         return "assignee/addAssignee";
     }
 
@@ -49,8 +53,8 @@ public class AssigneeController {
     }
 
     @PostMapping("/edit")
-    public String handleEditToDo(@ModelAttribute Assignee editToDo){
-        assigneeRepo.save(editToDo);
+    public String handleEditToDo(@ModelAttribute Assignee assignee){
+        assigneeRepo.save(assignee);
         return "redirect:/assignee/";
     }
 
