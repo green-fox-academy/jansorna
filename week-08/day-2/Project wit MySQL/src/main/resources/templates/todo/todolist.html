@@ -17,14 +17,14 @@
 </div>
 
 <div class="container">
-    <div class="form-group">
-        <div class="input-group mb-3">
     <form method="post" action="/todo/search">
-        <input name="search" type="text" class="form-control" placeholder="Searched word" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <input type="submit" value="SEARCH" class="btn btn-primary">
+        <div class="input-group mb-3">
+            <input name="search" type="text" class="form-control" placeholder="Search for task or description" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <input type="submit" value="SEARCH" class="btn btn-outline-secondary" id="button-addon2">
+            </div>
+        </div>
     </form>
-    </div>
-    </div>
 </div>
 
 <div class="container">
@@ -53,7 +53,10 @@
             <td th:switch="${todo.isUrgent()}">
                 <p th:case="true" class="material-icons" ; style="font-size: 50px">notification_important</p>
             </td>
-            <td th:text="${todo.getAssignee().getName()}"></td>
+            <td>
+                <a th:href="@{'/assignee/{id}/detail'(id=${todo.getAssignee().getId()})}"
+                   th:text="${todo.getAssignee().getName()}"></a>
+            </td>
             <td>
                 <a th:href="@{'/todo/{id}/delete'(id=${todo.getId()})}" class="material-icons"
                    style="color: black; font-size: 40px">delete</a>
@@ -73,6 +76,11 @@
 <div class="container">
     <a th:if="${active} == false" href="/todo/?isActive=true" class="btn btn-info btn-sm">Show only unfinished ToDos</a>
     <a th:if="${active} == true" href="/todo/" class="btn btn-info btn-sm">Show all ToDos</a>
+</div>
+
+<div class="container">
+    <a href="/assignee/" class="material-icons" style="font-size: 50px">keyboard_backspace</a>
+    <p>Get to Assignee List</p>
 </div>
 
 </body>

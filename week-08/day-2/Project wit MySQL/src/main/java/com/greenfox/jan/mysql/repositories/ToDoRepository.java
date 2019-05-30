@@ -4,6 +4,7 @@ import com.greenfox.jan.mysql.models.ToDo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -11,7 +12,9 @@ public interface ToDoRepository extends CrudRepository<ToDo, Long> {
 
     List<ToDo> findAllByDoneIsFalseOrderById();
 
-    List<ToDo> findAllByTitleLikeIgnoreCaseOrderById(String word);
+    List<ToDo> findAllByTitleLikeOrDescriptionLike(String word, String word2);
+
+    List<ToDo> findAllByCreationDateOrCreationDate (LocalDate date, LocalDate date2);
 
     List<ToDo> findAllByIdGreaterThanOrderById(long number);
 

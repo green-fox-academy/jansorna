@@ -1,7 +1,9 @@
 package com.greenfox.jan.mysql.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class ToDo {
@@ -11,9 +13,13 @@ public class ToDo {
     private long id;
 
     private String title;
+    private String description;
     private boolean urgent = false;
     private boolean done = false;
-    private LocalDateTime creationDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate creationDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dueDate;
 
     @ManyToOne()
     private Assignee assignee;
@@ -70,11 +76,11 @@ public class ToDo {
         this.done = done;
     }
 
-    public LocalDateTime getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -84,5 +90,21 @@ public class ToDo {
 
     public void setAssignee(Assignee assignee) {
         this.assignee = assignee;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
     }
 }

@@ -27,19 +27,13 @@
             <input type="text" class="form-control" th:field="*{email}" id="email">
         </div>
 
-        <select name="assignee">
-            <option th:each="todo : ${todos}" th:text="${todo.title}" th:value="${todo.id}" class="form-control"></option>
-        </select><br>
-
-
-
         <input type="submit" class="btn btn-primary" value="Submit">
     </form>
 
 </div>
 
 <div class="container">
-    <a href="/assignee/" class="material-icons" style="font-size: 50px">keyboard_backspace</a>
+    <a href="/assignee/" class="material-icons" style="font-size: 50px">keyboard_backspace</a><p>Get to Assignee List</p>
 </div>
 
 </body>

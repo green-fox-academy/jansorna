@@ -30,7 +30,6 @@ public class AssigneeController {
     @GetMapping("add")
     public String add(Model model){
         model.addAttribute("newAssignee", new Assignee());
-        model.addAttribute("todos", toDoRepo.findAll());
         return "assignee/addAssignee";
     }
 

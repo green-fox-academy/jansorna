@@ -17,14 +17,14 @@
 </div>
 
 <div class="container">
-    <div class="form-group">
+    <form method="post" action="/assignee/search">
         <div class="input-group mb-3">
-            <form method="post" action="/assignee/search">
-                <input name="search" type="text" class="form-control" placeholder="Searched assignee" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <input type="submit" value="SEARCH" class="btn btn-primary">
-            </form>
+            <input name="search" type="text" class="form-control" placeholder="Search for Assignee" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <input type="submit" value="SEARCH" class="btn btn-outline-secondary" id="button-addon2">
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
 <div class="container">
@@ -34,7 +34,6 @@
             <th scope="col">ID</th>
             <th scope="col">NAME</th>
             <th scope="col">EMAIL</th>
-            <th scope="col">ToDos</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -46,7 +45,6 @@
                 <a th:href="@{'/assignee/{id}/detail'(id=${assignee.getId()})}" th:text="${assignee.getName()}"></a>
             </td>
             <td th:text="${assignee.getEmail()}"></td>
-            <td th:text="${assignee.getTodos()}"></td>
             <td>
                 <a th:href="@{'/assignee/{id}/delete'(id=${assignee.getId()})}" class="material-icons"
                    style="color: black; font-size: 40px">delete</a>
@@ -61,6 +59,10 @@
 
 <div class="container">
     <a href="/assignee/add" class="material-icons" style="color: blue; font-size: 50px">create_new_folder</a>
+</div>
+
+<div class="container">
+    <a href="/todo/" class="material-icons" style="font-size: 50px">keyboard_backspace</a><p>Get to ToDos List</p>
 </div>
 
 </body>

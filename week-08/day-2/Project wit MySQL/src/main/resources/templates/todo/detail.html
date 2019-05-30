@@ -19,16 +19,19 @@
         <thead class="thead-dark" style="text-align: left">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">ACTION</td>
+            <th scope="col">TASK</td>
+            <th scope="col">DESCRIPTION</td>
             <th scope="col">DONE</td>
             <th scope="col">URGENT</td>
             <th scope="col">DATE OF CREATION</td>
+            <th scope="col">DUE DATE</td>
         </tr>
         </thead>
         <tbody>
         <tr scope="row">
             <td th:text="${todo.getId()}"></td>
             <td th:text="${todo.getTitle()}"></td>
+            <td th:text="${todo.getDescription()}"></td>
             <td th:switch="${todo.done}">
                 <p th:case="true" class="material-icons" style="color: green; font-size: 40px">done</p>
                 <p th:case="false" class="material-icons" style="color: red; font-size: 40px">clear</p>
@@ -37,13 +40,14 @@
                 <p th:case="true" class="material-icons" ; style="font-size: 50px">notification_important</p>
             </td>
             <td th:text="${todo.getCreationDate()}"></td>
+            <td th:text="${todo.getDueDate()}"></td>
         </tr>
         </tbody>
     </table>
 </div>
 
 <div class="container">
-    <a href="/todo/" class="material-icons" style="font-size: 50px">keyboard_backspace</a>
+    <a href="/todo/" class="material-icons" style="font-size: 50px">keyboard_backspace</a><p>Get to ToDos List</p>
 </div>
 
 </body>

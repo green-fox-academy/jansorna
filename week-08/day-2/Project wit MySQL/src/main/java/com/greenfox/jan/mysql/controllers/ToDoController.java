@@ -1,6 +1,5 @@
 package com.greenfox.jan.mysql.controllers;
 
-import com.greenfox.jan.mysql.models.Assignee;
 import com.greenfox.jan.mysql.models.ToDo;
 import com.greenfox.jan.mysql.repositories.AssigneeRepository;
 import com.greenfox.jan.mysql.repositories.ToDoRepository;
@@ -8,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/todo")
@@ -44,7 +44,7 @@ public class ToDoController {
 
     @PostMapping("add")
     public String handleNewToDo(@ModelAttribute ToDo newToDo){
-        newToDo.setCreationDate(LocalDateTime.now());
+        newToDo.setCreationDate(LocalDate.now());
         toDoRepo.save(newToDo);
         return "redirect:/todo/";
     }
@@ -64,7 +64,7 @@ public class ToDoController {
 
     @PostMapping("/edit")
     public String handleEditToDo(@ModelAttribute ToDo editToDo){
-        editToDo.setCreationDate(LocalDateTime.now());
+        editToDo.setCreationDate(LocalDate.now());
         toDoRepo.save(editToDo);
         return "redirect:/todo/";
     }
@@ -77,8 +77,7 @@ public class ToDoController {
 
     @RequestMapping("/search")
     public String displaySearch(Model model,@RequestParam String search) {
-        model.addAttribute("todos", toDoRepo.findAllByTitleLikeIgnoreCaseOrderById( "%" + search + "%"));
-        model.addAttribute("active", false);
+        model.addAttribute("todos", toDoRepo.findAllByTitleLikeOrDescriptionLike( "%" + search + "%", "%" + search + "%"));
         return "todo/searchedlist";
     }
 }
