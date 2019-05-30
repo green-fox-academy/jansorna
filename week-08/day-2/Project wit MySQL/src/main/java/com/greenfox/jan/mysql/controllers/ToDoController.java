@@ -1,6 +1,8 @@
 package com.greenfox.jan.mysql.controllers;
 
+import com.greenfox.jan.mysql.models.Assignee;
 import com.greenfox.jan.mysql.models.ToDo;
+import com.greenfox.jan.mysql.repositories.AssigneeRepository;
 import com.greenfox.jan.mysql.repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,12 @@ import java.time.LocalDateTime;
 public class ToDoController {
 
     private ToDoRepository toDoRepo;
+    private AssigneeRepository assigneeRepo;
 
     @Autowired
-    public ToDoController(ToDoRepository toDoRepo) {
+    public ToDoController(ToDoRepository toDoRepo, AssigneeRepository assigneeRepo) {
         this.toDoRepo = toDoRepo;
+        this.assigneeRepo = assigneeRepo;
     }
 
     @RequestMapping(value = {"/", "/list"})
@@ -53,6 +57,7 @@ public class ToDoController {
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable long id){
         model.addAttribute("editToDo", toDoRepo.findById(id).get());
+        model.addAttribute("assignees", assigneeRepo.findAll());
         return "todo/edit";
     }
 

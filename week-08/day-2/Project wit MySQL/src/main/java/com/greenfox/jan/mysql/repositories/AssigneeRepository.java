@@ -11,4 +11,5 @@ public interface AssigneeRepository extends CrudRepository<Assignee, Long> {
     List<Assignee> findAllByIdGreaterThanOrderById(long number);
 
     List<Assignee> findAllByNameLikeIgnoreCaseOrderById(String word);
+
 }

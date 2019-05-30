@@ -1,9 +1,7 @@
 package com.greenfox.jan.mysql.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Assignee {
@@ -15,12 +13,23 @@ public class Assignee {
     private String name;
     private String email;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<ToDo> todos;
+
     public Assignee() {
+    }
+    public Assignee(String name) {
+        this.name = name;
     }
 
     public Assignee(String name, String email) {
         this.name = name;
         this.email = email;
+    }
+
+    public void addToDo(ToDo addedToDo){
+        addedToDo.setAssignee(this);
+        this.todos.add(addedToDo);
     }
 
     //getters and setters
@@ -47,5 +56,13 @@ public class Assignee {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<ToDo> getTodos() {
+        return todos;
+    }
+
+    public void setTodos(List<ToDo> todos) {
+        this.todos = todos;
     }
 }

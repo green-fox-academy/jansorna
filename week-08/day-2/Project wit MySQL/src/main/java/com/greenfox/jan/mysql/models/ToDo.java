@@ -1,9 +1,6 @@
 package com.greenfox.jan.mysql.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,6 +14,9 @@ public class ToDo {
     private boolean urgent = false;
     private boolean done = false;
     private LocalDateTime creationDate;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Assignee assignee;
 
     public ToDo() {
     }
@@ -76,5 +76,13 @@ public class ToDo {
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public Assignee getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(Assignee assignee) {
+        this.assignee = assignee;
     }
 }
