@@ -3,6 +3,7 @@ package com.greenfox.jan.reddit.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @Entity
@@ -16,6 +17,9 @@ public class RedditPost {
     private String title;
     private String url;
     private LocalDate date;
+
+    @ManyToOne
+    User user;
 
     public RedditPost() {
         this.date = LocalDate.now();
