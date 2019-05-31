@@ -67,7 +67,7 @@ public class RedditController {
         return "redirect:/1";
     }
 
-    @GetMapping("/{id}/detail")
+    @GetMapping("{id}/detail")
     public String detail(Model model, @PathVariable long id) {
         model.addAttribute("reddit", redditRepo.findFirstById(id));
         return "detail";
