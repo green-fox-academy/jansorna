@@ -2,60 +2,73 @@ package com.greenfox.jan.reddit.controllers;
 
 import com.greenfox.jan.reddit.models.RedditPost;
 import com.greenfox.jan.reddit.repository.RedditRepo;
+import com.greenfox.jan.reddit.services.RedditService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 public class RedditController {
 
-    RedditRepo redditRepo;
+    private RedditRepo redditRepo;
+    private RedditService redditService;
 
     @Autowired
-    public RedditController(RedditRepo redditRepo) {
+    public RedditController(RedditRepo redditRepo, RedditService redditService) {
         this.redditRepo = redditRepo;
+        this.redditService = redditService;
     }
 
-    @GetMapping("/")
-    public String showReddit(Model model){
-        model.addAttribute("reddits", redditRepo.findAllByIdGreaterThanOrderByVotesDesc(0l));
+    @GetMapping(value = "/{page}")
+    public String listArticlesPageByPage(@PathVariable("page") int page, Model model) {
+        PageRequest pageable = PageRequest.of(page - 1, 10);
+        Page<RedditPost> redditPage = redditService.getPaginatedRedditPosts(pageable);
+        int totalPages = redditPage.getTotalPages();
+        if(totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+        model.addAttribute("reddits", redditPage.getContent());
         return "main";
     }
 
     @GetMapping("/add")
-    public String add (Model model){
+    public String add(Model model) {
         model.addAttribute("reddit", new RedditPost());
         return "add";
     }
 
     @PostMapping("/add")
-    public String handleAdd(@ModelAttribute RedditPost newPost){
+    public String handleAdd(@ModelAttribute RedditPost newPost) {
         redditRepo.save(newPost);
-        return "redirect:/";
+        return "redirect:/1";
     }
 
     @GetMapping("/{id}/plus")
-    public String plus(@PathVariable long id){
+    public String plus(@PathVariable long id) {
         RedditPost post = redditRepo.findFirstById(id);
         post.setVotes(post.getVotes() + 1);
         redditRepo.save(post);
-        return "redirect:/";
+        return "redirect:/1";
     }
 
     @GetMapping("/{id}/minus")
-    public String minus(@PathVariable long id){
+    public String minus(@PathVariable long id) {
         RedditPost post = redditRepo.findFirstById(id);
         post.setVotes(post.getVotes() - 1);
         redditRepo.save(post);
-        return "redirect:/";
+        return "redirect:/1";
     }
 
     @GetMapping("/{id}/detail")
-    public String detail(Model model, @PathVariable long id){
+    public String detail(Model model, @PathVariable long id) {
         model.addAttribute("reddit", redditRepo.findFirstById(id));
         return "detail";
     }
