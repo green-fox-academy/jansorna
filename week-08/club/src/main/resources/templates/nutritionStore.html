@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel='stylesheet' href='styles.css'/>
+</head>
+<body>
+
+<form method="post">
+    <select name="meal">
+        <option th:each="meal : ${meals}" th:text="${meal}"></option>
+    </select>
+    <select name="drink">
+        <option th:each="drink : ${drinks}" th:text="${drink}"></option>
+    </select>
+    <input type="submit" value="Change">
+</form>
+
+</body>
+</html>
