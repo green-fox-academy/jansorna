@@ -1,8 +1,11 @@
 package com.greenfox.rest.controllers;
 
+import com.greenfox.rest.models.ArrayHandlerDouble;
 import com.greenfox.rest.models.DoUntil;
 import com.greenfox.rest.models.Greeter;
-import com.greenfox.rest.models.SentNumber;
+import com.greenfox.rest.models.ArrayHandlerSumAndMultiply;
+import com.greenfox.rest.models.receivedFromREST.InputObjectArrayHandler;
+import com.greenfox.rest.models.receivedFromREST.InputObjectDoUntil;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -29,7 +32,20 @@ public class MainController {
     }
 
     @PostMapping("/dountil/{action}")
-    public DoUntil doUntil(@PathVariable String action, @RequestBody(required = false) SentNumber until){
-        return new DoUntil(action, until.getUntil());
+    public DoUntil doUntil(@PathVariable String action, @RequestBody(required = false) InputObjectDoUntil inputNumber){
+        return new DoUntil(action, inputNumber.getUntil());
     }
+
+    @PostMapping("/arrays")
+    public Object arrayHandler(@RequestBody(required = false) InputObjectArrayHandler inputObjectArrayHandler){
+
+        if (inputObjectArrayHandler.getWhat().isEmpty() || inputObjectArrayHandler.getNumbers() == null){
+            return new Error("Please provide what to do with the numbers!");
+        } else if(inputObjectArrayHandler.getWhat().equals("double")){
+            return new ArrayHandlerDouble(inputObjectArrayHandler.getNumbers());
+        } else {
+            return new ArrayHandlerSumAndMultiply(inputObjectArrayHandler.getWhat(), inputObjectArrayHandler.getNumbers());
+        }
+    }
+
 }

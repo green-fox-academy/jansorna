@@ -1,13 +1,13 @@
-package com.greenfox.rest.models;
+package com.greenfox.rest.models.receivedFromREST;
 
-public class SentNumber {
+public class InputObjectDoUntil {
 
     private Integer until;
 
-    public SentNumber() {
+    public InputObjectDoUntil() {
     }
 
-    public SentNumber(Integer until) {
+    public InputObjectDoUntil(Integer until) {
         this.until = until;
     }
 
