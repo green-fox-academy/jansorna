@@ -1,9 +1,9 @@
 package com.greenfox.rest.controllers;
 
+import com.greenfox.rest.models.DoUntil;
 import com.greenfox.rest.models.Greeter;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.greenfox.rest.models.SentNumber;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -21,5 +21,15 @@ public class MainController {
     @GetMapping("/greeter")
     public Greeter greeting(@RequestParam(required = false) String name, @RequestParam(required = false) String title){
         return new Greeter(name, title);
+    }
+
+    @GetMapping("/appenda/{appendable}")
+    public String append(@PathVariable String appendable){
+        return "appended: " + appendable + "a";
+    }
+
+    @PostMapping("/dountil/{action}")
+    public DoUntil doUntil(@PathVariable String action, @RequestBody(required = false) SentNumber until){
+        return new DoUntil(action, until.getUntil());
     }
 }
