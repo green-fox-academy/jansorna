@@ -1,4 +1,4 @@
-package com.greenfox.rest.models;
+package com.greenfox.rest.models.log;
 
 public class LogCounter {
     private Iterable<Log> logList;

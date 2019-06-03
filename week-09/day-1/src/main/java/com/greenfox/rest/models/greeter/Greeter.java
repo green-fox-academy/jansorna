@@ -1,4 +1,4 @@
-package com.greenfox.rest.models;
+package com.greenfox.rest.models.greeter;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

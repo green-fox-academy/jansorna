@@ -1,4 +1,4 @@
-package com.greenfox.rest.models.receivedFromREST;
+package com.greenfox.rest.models.dountil;
 
 public class InputObjectDoUntil {
 

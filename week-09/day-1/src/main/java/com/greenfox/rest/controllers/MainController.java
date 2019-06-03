@@ -1,8 +1,13 @@
 package com.greenfox.rest.controllers;
 
-import com.greenfox.rest.models.*;
-import com.greenfox.rest.models.receivedFromREST.InputObjectArrayHandler;
-import com.greenfox.rest.models.receivedFromREST.InputObjectDoUntil;
+import com.greenfox.rest.models.array.ArrayHandlerDouble;
+import com.greenfox.rest.models.array.ArrayHandlerSumAndMultiply;
+import com.greenfox.rest.models.dountil.DoUntil;
+import com.greenfox.rest.models.greeter.Greeter;
+import com.greenfox.rest.models.array.InputObjectArrayHandler;
+import com.greenfox.rest.models.dountil.InputObjectDoUntil;
+import com.greenfox.rest.models.log.Log;
+import com.greenfox.rest.models.log.LogCounter;
 import com.greenfox.rest.repositories.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
