@@ -53,17 +53,13 @@ public class RedditController {
 
     @GetMapping("/{id}/plus")
     public String plus(@PathVariable long id) {
-        RedditPost post = redditRepo.findFirstById(id);
-        post.setVotes(post.getVotes() + 1);
-        redditRepo.save(post);
+        redditService.addVote(id);
         return "redirect:/1";
     }
 
     @GetMapping("/{id}/minus")
     public String minus(@PathVariable long id) {
-        RedditPost post = redditRepo.findFirstById(id);
-        post.setVotes(post.getVotes() - 1);
-        redditRepo.save(post);
+        redditService.takeVote(id);
         return "redirect:/1";
     }
 

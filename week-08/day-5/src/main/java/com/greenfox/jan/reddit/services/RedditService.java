@@ -20,4 +20,16 @@ public class RedditService {
     public Page<RedditPost> getPaginatedRedditPosts(Pageable pageable) {
         return repo.findAllByIdGreaterThanOrderByVotesDesc(pageable, 0L);
     }
+
+    public void addVote(long id){
+        RedditPost post = repo.findFirstById(id);
+        post.setVotes(post.getVotes() + 1);
+        repo.save(post);
+    }
+
+    public void takeVote (long id){
+        RedditPost post = repo.findFirstById(id);
+        post.setVotes(post.getVotes() - 1);
+        repo.save(post);
+    }
 }
