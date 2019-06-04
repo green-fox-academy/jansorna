@@ -2,6 +2,7 @@ package com.greenfox.rest.controllers;
 
 import com.greenfox.rest.models.array.ArrayHandlerDouble;
 import com.greenfox.rest.models.array.ArrayHandlerSumAndMultiply;
+import com.greenfox.rest.models.doubling.Doubling;
 import com.greenfox.rest.models.dountil.DoUntil;
 import com.greenfox.rest.models.greeter.Greeter;
 import com.greenfox.rest.models.array.InputObjectArrayHandler;
@@ -17,7 +18,7 @@ import java.lang.Error;
 @RestController
 public class MainController {
 
-    LogRepository repo;
+    private LogRepository repo;
 
     @Autowired
     public MainController(LogRepository repo) {
@@ -25,13 +26,9 @@ public class MainController {
     }
 
     @GetMapping("/doubling")
-    public String doubling(@RequestParam(required = false) Integer input) {
-        repo.save(new Log("/doubling", "input=" + String.valueOf(input)));
-        if (input != null) {
-            return "{received: " + input + "," + "result: " + input * 2 + "}";
-        } else {
-            return "error: Please provide an input!";
-        }
+    public Doubling doubling(@RequestParam(required = false) Integer input) {
+        repo.save(new Log("/Doubling", "input=" + String.valueOf(input)));
+        return new Doubling(input);
     }
 
     @GetMapping("/greeter")
