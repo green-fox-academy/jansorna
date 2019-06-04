@@ -4,7 +4,6 @@ public class LogCounter {
     private Iterable<Log> logList;
     private String entry_count;
 
-
     public LogCounter(Iterable<Log> logList, String entry_count) {
         this.logList = logList;
         this.entry_count = entry_count;

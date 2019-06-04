@@ -1,9 +1,12 @@
 package com.greenfox.rest.integration;
 
 import com.greenfox.rest.controllers.MainController;
+import com.greenfox.rest.models.log.Log;
+import com.greenfox.rest.models.log.LogCounter;
 import com.greenfox.rest.repositories.LogRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -11,6 +14,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Arrays;
+import java.util.Iterator;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -172,5 +178,4 @@ public class MainControllerTest {
                 .content(content))
                 .andExpect(status().is(400));
     }
-
 }
