@@ -57,15 +57,15 @@ public class MainController {
     }
 
     @PostMapping("/arrays")
-    public Object arrayHandler(@RequestBody(required = false) InputObjectArrayHandler inputObjectArrayHandler) {
+    public ResponseEntity<Object> arrayHandler(@RequestBody(required = false) InputObjectArrayHandler inputObjectArrayHandler) {
         repo.save(new Log("arrays", "what=" + inputObjectArrayHandler.getWhat() + "numbers=" + inputObjectArrayHandler.getNumbers()));
 
         if (inputObjectArrayHandler.getWhat().isEmpty() || inputObjectArrayHandler.getNumbers() == null) {
-            return new Error("Please provide what to do with the numbers!");
+            return new ResponseEntity<>(new Error("Please provide what to do with the numbers!"), HttpStatus.valueOf(400));
         } else if (inputObjectArrayHandler.getWhat().equals("double")) {
-            return new ArrayHandlerDouble(inputObjectArrayHandler.getNumbers());
+            return new ResponseEntity<>(new ArrayHandlerDouble(inputObjectArrayHandler.getNumbers()), HttpStatus.OK);
         } else {
-            return new ArrayHandlerSumAndMultiply(inputObjectArrayHandler.getWhat(), inputObjectArrayHandler.getNumbers());
+            return new ResponseEntity<>(new ArrayHandlerSumAndMultiply(inputObjectArrayHandler.getWhat(), inputObjectArrayHandler.getNumbers()), HttpStatus.OK);
         }
     }
 

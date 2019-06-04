@@ -2,8 +2,6 @@ package com.greenfox.rest.models.array;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import java.lang.reflect.Array;
-
 public class ArrayHandlerDouble {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
