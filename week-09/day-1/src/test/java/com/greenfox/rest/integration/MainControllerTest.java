@@ -41,6 +41,46 @@ public class MainControllerTest {
         mockMvc.perform(get("/doubling"))
                 .andExpect(status().is(200))
                 .andExpect(jsonPath("$.error").value("Please provide an input!"));
-
     }
+
+    @Test
+    public void greeterIsReturnedCorrectly() throws Exception {
+
+        mockMvc.perform(get("/greeter?name=Petike&title=student"))
+                .andExpect(status().is(200))
+                .andExpect(jsonPath("$.welcome_message").value("Oh, hi there Petike, my dear student!"));
+    }
+
+    @Test
+    public void greeterErrorsAreReturnedCorrectly() throws Exception {
+
+        mockMvc.perform(get("/greeter"))
+                .andExpect(status().is(200))
+                .andExpect(jsonPath("$.error").value("Please provide a name and a title!"));
+
+        mockMvc.perform(get("/greeter?name=Petike"))
+                .andExpect(status().is(200))
+                .andExpect(jsonPath("$.error").value("Please provide a title!"));
+
+        mockMvc.perform(get("/greeter?title=student"))
+                .andExpect(status().is(200))
+                .andExpect(jsonPath("$.error").value("Please provide a name!"));
+    }
+
+    @Test
+    public void appendIsReturnedCorrectly() throws Exception {
+
+        mockMvc.perform(get("/appenda/Checki"))
+                .andExpect(status().is(200))
+                .andExpect(jsonPath("$.appended").value("Checkia"));
+    }
+
+    @Test
+    public void appendErrorIsReturnedCorrectly() throws Exception {
+
+        mockMvc.perform(get("/appenda/"))
+                .andExpect(status().is(404));
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package com.greenfox.rest.controllers;
 
+import com.greenfox.rest.models.appendable.Append;
 import com.greenfox.rest.models.array.ArrayHandlerDouble;
 import com.greenfox.rest.models.array.ArrayHandlerSumAndMultiply;
 import com.greenfox.rest.models.doubling.Doubling;
@@ -11,6 +12,8 @@ import com.greenfox.rest.models.log.Log;
 import com.greenfox.rest.models.log.LogCounter;
 import com.greenfox.rest.repositories.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.Error;
@@ -27,7 +30,7 @@ public class MainController {
 
     @GetMapping("/doubling")
     public Doubling doubling(@RequestParam(required = false) Integer input) {
-        repo.save(new Log("/Doubling", "input=" + String.valueOf(input)));
+        repo.save(new Log("/doubling", "input=" + String.valueOf(input)));
         return new Doubling(input);
     }
 
@@ -38,9 +41,13 @@ public class MainController {
     }
 
     @GetMapping("/appenda/{appendable}")
-    public String append(@PathVariable String appendable) {
+    public ResponseEntity<Append> append(@PathVariable(required = false) String appendable) {
         repo.save(new Log("/appenda/{appendable}", "appendable=" + appendable));
-        return "appended: " + appendable + "a";
+        if (appendable != null) {
+            return new ResponseEntity<>(new Append(appendable), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("/dountil/{action}")
