@@ -13,3 +13,7 @@ This is repository of Jan Sorna for all workshop exercises (Ferrilata, Siesta, P
 # My website on GitHub
 
 [https://jansorna.github.io/]
+
+# P2P chat app
+
+[https://github.com/jansorna/p2p-chat]

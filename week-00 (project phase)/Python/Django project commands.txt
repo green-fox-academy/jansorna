@@ -1,0 +1,18 @@
+django-admin startproject nameofproject - create the project
+python manage.py runserver - run server
+
+Add sql connection (need to create database first)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'python',
+        'USER': 'root',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+
+python manage.py migrate - create tables in database
+python manage.py startapp nameofapp - create an app(component)
