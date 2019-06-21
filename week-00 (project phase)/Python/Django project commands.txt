@@ -14,5 +14,6 @@ DATABASES = {
     }
 }
 
+python manage.py makemigrations - after creating model, it will create migrations for it and it is ready to push to database
 python manage.py migrate - create tables in database
 python manage.py startapp nameofapp - create an app(component)
