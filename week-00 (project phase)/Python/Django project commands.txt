@@ -14,6 +14,17 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'zero_week_workshop',
+        'USER': os.environ['USER_SQL'],
+        'PASSWORD': os.environ['PASSWORD_SQL'],
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+
 python manage.py makemigrations - after creating model, it will create migrations for it and it is ready to push to database
 python manage.py migrate - create tables in database
 python manage.py startapp nameofapp - create an app(component)
